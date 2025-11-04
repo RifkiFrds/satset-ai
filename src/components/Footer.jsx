@@ -1,39 +1,131 @@
-import React from "react";
-import { Heart } from "lucide-react";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { X, Instagram, Youtube, Github } from 'lucide-react';
+
+// (Asumsi) Logo Anda ada di public/assets/logo.svg
+// Pastikan path ini benar
+import Logo from '../assets/logo.png'; 
+
+// --- Data Link (Tetap sama) ---
+const linkColumns = [
+  {
+    title: "Features",
+    links: [
+      { name: "Chatbot AI", href: "/chat" },
+      { name: "Template Makalah", href: "/outline" },
+      { name: "Review Jurnal", href: "/review" },
+    ],
+  },
+  {
+    title: "Project",
+    links: [
+      { name: "About Us", href: "/about" },
+      { name: "GitHub", href: "https://github.com/your-repo/satset-ai" }, 
+      { name: "Contributors", href: "/contributors" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { name: "Privacy Policy", href: "/" },
+      { name: "Terms of Service", href: "/" },
+    ],
+  },
+];
+
+// --- Ikon Sosial Media (Tetap sama) ---
+const socialIcons = [
+  { icon: Github, href: "https://github.com/your-repo/satset-ai", name: "GitHub" },
+  { icon: X, href: "#", name: "X (Twitter)" },
+  { icon: Instagram, href: "#", name: "Instagram" },
+  { icon: Youtube, href: "#", name: "YouTube" },
+];
 
 export default function Footer() {
   return (
-    <footer className="relative mt-auto bg-base-100 border-t border-white/10 backdrop-blur-md">
-      {/* Decorative subtle wave (optional) */}
-      <div className="absolute inset-x-0 -top-1">
-        <svg
-          className="w-full h-8 text-white/5"
-          viewBox="0 0 1440 80"
-          preserveAspectRatio="none"
-          xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-        >
-          <path
-            d="M0,48 C240,96 360,0 720,32 C1080,64 1200,24 1440,48 L1440,80 L0,80 Z"
-            fill="currentColor"
-          />
-        </svg>
-      </div>
+    // [REVISI 1: Background] Ganti ke 'bg-white' dengan border atas
+    <footer className="bg-white text-gray-900 border-t border-gray-200">
+      <div className="container mx-auto px-6 py-16">
+        
+        {/* === Bagian Atas: Grid Link === */}
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10">
+          
+          {/* Kolom 1: Logo & Slogan */}
+          <div className="col-span-2 lg:col-span-2">
+            <Link to="/" className="flex items-center gap-3 mb-4">
+              {/* [REVISI 2: Logo] Ukuran dibesarkan (h-10), teks dihapus */}
+              <img src={Logo} alt="SATSET AI Logo" className="h-12 w-auto" /> 
+              {/* Teks "SATSET AI" dihapus dari sini */}
+            </Link>
+            <p className="text-gray-600 text-sm max-w-xs"> 
+              {/* <-- Warna teks disesuaikan untuk light mode */}
+              AI-powered tools designed to boost student productivity.
+            </p>
+          </div>
 
-      {/* Content */}
-      <div className="relative z-10 flex flex-col items-center justify-center py-6 px-4 text-center">
-        <div className="flex items-center gap-2 text-sm text-gray/80">
-          <span>Made with</span>
-          <Heart
-            className="text-pink-500 fill-pink-500 animate-pulse"
-            size={16}
-          />
-          <span>by</span>
-          <span className="font-semibold text-gray-80">Satset AI</span>
+          {/* Kolom 2-4: Link Navigasi */}
+          {linkColumns.map((column) => (
+            <div key={column.title}>
+              <h5 className="mb-4 font-semibold text-gray-500 uppercase tracking-wider text-sm">
+                {/* <-- Warna teks disesuaikan */}
+                {column.title}
+              </h5>
+              <ul className="space-y-3">
+                {column.links.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      to={link.href}
+                      // [REVISI 3: Accent Color]
+                      // Teks abu-abu, saat hover menjadi warna primary Anda
+                      className="
+                        text-gray-700 
+                        hover:text-[#647DEB] 
+                        transition-colors duration-200 text-sm
+                      "
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div> {/* === Akhir Grid Atas === */}
+
+        {/* === Garis Pemisah === */}
+        <hr className="my-10 border-gray-200" /> 
+        {/* <-- Warna border disesuaikan */}
+        
+        {/* === Bagian Bawah: Copyright & Sosial Media === */}
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          
+          {/* Copyright */}
+          <p className="text-sm text-gray-500 order-2 md:order-1">
+            © {new Date().getFullYear()} SATSET AI. All rights reserved.
+          </p>
+
+          {/* Ikon Sosial Media */}
+          <div className="flex space-x-6 order-1 md:order-2">
+            {socialIcons.map((social) => (
+              <a 
+                key={social.name} 
+                href={social.href} 
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={social.name}
+                className="
+                  text-gray-500 
+                  hover:text-[#647DEB] 
+                  transition-colors duration-200
+                "
+              >
+                <social.icon size={20} />
+              </a>
+            ))}
+          </div>
+
         </div>
-        <p className="text-xs mt-2 text-white/50">
-          © {new Date().getFullYear()} All rights reserved.
-        </p>
+
       </div>
     </footer>
   );

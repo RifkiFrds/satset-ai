@@ -1,99 +1,86 @@
-import React from "react";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon, BookCheckIcon } from "lucide-react";
+import {
+  Menu,
+  X,
+  Sun,
+  Moon,
+  ChevronDown,
+  MessageSquare,
+  SearchCheck,
+  FileText,
+} from "lucide-react";
 import { BorderBeam } from "./ui/BorderBeam";
-
+import logo from "../assets/logo.png";
+import { Link } from "react-router-dom";
 
 const navItems = [
-  { name: "Home", href: "#hero" }, 
-  { name: "About", href: "#about" }, 
-  { name: "Features", href: "#features" }, 
-  { name: "Contributor", href: "#contributor" }, 
+  { name: "Home", to: "/" },
+  {
+    name: "Features",
+    to: "/features",
+    dropdown: [
+      {
+        name: "Chat Bot AI",
+        to: "/features/chat-bot-ai",
+        description: "Asisten cerdas untuk menjawab pertanyaan Anda.",
+        icon: <MessageSquare size={20} className="text-blue-500" />,
+      },
+      {
+        name: "Review Jurnal AI",
+        to: "/features/review-jurnal-ai",
+        description: "Analisis dan ringkas paper ilmiah secara instan.",
+        icon: <SearchCheck size={20} className="text-green-500" />,
+      },
+      {
+        name: "Template Makalah",
+        to: "/features/template-makalah",
+        description: "Buat kerangka tugas & laporan otomatis.",
+        icon: <FileText size={20} className="text-purple-500" />,
+      },
+    ],
+  },
+  { name: "Contributor", to: "/contributor" },
 ];
 
 export default function Navbar() {
-  const [theme, setTheme] = useState(() => {
-    return localStorage.getItem("theme") || "light";
-  });
+  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [openMobileItem, setOpenMobileItem] = useState(null);
 
   // Theme toggle
   useEffect(() => {
-    if (theme === "dark") {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
+    document.documentElement.classList.toggle("dark", theme === "dark");
     localStorage.setItem("theme", theme);
   }, [theme]);
 
-  // Scroll listener for hide/show header
+  // Hide/show header on scroll
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY > lastScrollY && currentScrollY > 80) {
-        setShowHeader(false); // Scrolling down
-      } else {
-        setShowHeader(true); // Scrolling up
-      }
+      setShowHeader(!(currentScrollY > lastScrollY && currentScrollY > 80));
       setLastScrollY(currentScrollY);
     };
-
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-  // ScrollTo function
-  const handleScrollTo = (id) => {
-    // Menambahkan penanganan jika ID adalah "/" atau path
-    // Jika tidak, itu akan error. Kita hanya proses hash ID.
-    if (id.startsWith("#")) {
-      const target = document.querySelector(id);
-      if (target) {
-        target.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    } else {
-      // Jika ini adalah path (cth: "/"), kita scroll ke atas
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
-    setIsMobileMenuOpen(false);
-  };
-
-  // ... (menuVariants, listVariants, itemVariants tetap sama) ...
   const menuVariants = {
-    open: {
-      clipPath: "circle(1200px at 90% 5%)",
-      transition: { type: "spring", stiffness: 20, restDelta: 2 },
-    },
-    closed: {
-      clipPath: "circle(20px at 90% 5%)",
-      transition: { type: "spring", stiffness: 400, damping: 40 },
-    },
+    open: { clipPath: "circle(1200px at 90% 5%)", transition: { type: "spring", stiffness: 20 } },
+    closed: { clipPath: "circle(20px at 90% 5%)", transition: { type: "spring", stiffness: 400, damping: 40 } },
   };
 
   const listVariants = {
-    open: {
-      transition: { staggerChildren: 0.07, delayChildren: 0.2 },
-    },
-    closed: {
-      transition: { staggerChildren: 0.05, staggerDirection: -1 },
-    },
+    open: { transition: { staggerChildren: 0.07, delayChildren: 0.2 } },
+    closed: { transition: { staggerChildren: 0.05, staggerDirection: -1 } },
   };
 
   const itemVariants = {
-    open: {
-      y: 0,
-      opacity: 1,
-      transition: { y: { stiffness: 1000, velocity: -100 } },
-    },
-    closed: {
-      y: 50,
-      opacity: 0,
-      transition: { y: { stiffness: 1000 } },
-    },
+    open: { y: 0, opacity: 1, transition: { y: { stiffness: 1000 } } },
+    closed: { y: 50, opacity: 0, transition: { y: { stiffness: 1000 } } },
   };
 
   return (
@@ -101,26 +88,27 @@ export default function Navbar() {
       {showHeader && (
         <motion.header
           initial={{ y: -100, opacity: 0 }}
-          animate={{ y: 0, top: 20, opacity: 1 }} // <-- Memastikan 'top: 20' ada di 'animate'
-          exit={{ y: -100, opacity: 0, transition: { duration: 0.4 } }}
-          transition={{ duration: 0.4, ease: "easeOut" }} // <-- Durasi disamakan
-          className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4"
+          animate={{ y: 0, opacity: 1 }}
+          exit={{ y: -100, opacity: 0 }}
+          transition={{ duration: 0.4 }}
+          className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4"
         >
           <div
             className="border border-gray-100 dark:border-gray-900 backdrop-blur-xl
-             w-full xl:max-w-6xl rounded-full
-             flex items-center justify-between px-6 py-3
-             transition-all duration-300"
+               w-full xl:max-w-2xl rounded-full
+               flex items-center justify-between px-6 py-3 transition-all duration-300"
           >
             <BorderBeam />
 
-            {/* Logo / Brand */}
-            <a
-              onClick={() => handleScrollTo("#hero")} // Logo scroll ke #hero
-              className="cursor-pointer font-bold text-lg text-gray-800 dark:text-white"
-            >
-              <BookCheckIcon />
-            </a>
+            {/* Logo */}
+            <Link to="/" className="cursor-pointer">
+              <img
+                src={logo}
+                alt="Logo"
+                className="h-14 w-auto"
+                style={{ objectPosition: "center" }}
+              />
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex flex-1 justify-center">
@@ -128,46 +116,86 @@ export default function Navbar() {
                 {navItems.map((item) => (
                   <motion.li
                     key={item.name}
-                    className="relative group text-sm font-medium text-gray-600 
-                     dark:text-gray-300 transition-colors"
+                    className="relative group text-sm font-medium text-gray-600 dark:text-gray-300"
+                    onHoverStart={() => item.dropdown && setActiveDropdown(item.name)}
+                    onHoverEnd={() => item.dropdown && setActiveDropdown(null)}
                   >
-                    <a
-                      onClick={() => handleScrollTo(item.href)}
-                      className="cursor-pointer hover:text-blue-800 dark:hover:text-blue-400"
-                    >
-                      {item.name}
-                    </a>
-                    <motion.span
-                      className="absolute bottom-0 left-1/2 w-0 h-0.5 bg-blue-500 rounded-full"
-                      initial={{ width: 0, x: "-50%" }}
-                      whileHover={{ width: "100%" }}
-                      transition={{ duration: 0.3 }}
-                    />
+                    {item.dropdown ? (
+                      <div className="flex items-center space-x-1 cursor-pointer hover:text-blue-800 dark:hover:text-blue-400">
+                        <span>{item.name}</span>
+                        <ChevronDown
+                          size={16}
+                          className={`transition-transform duration-200 ${
+                            activeDropdown === item.name ? "rotate-180" : ""
+                          }`}
+                        />
+                      </div>
+                    ) : (
+                      <Link
+                        to={item.to}
+                        className="cursor-pointer hover:text-blue-800 dark:hover:text-blue-400"
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+
+                    <AnimatePresence>
+                      {item.dropdown && activeDropdown === item.name && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 15, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 15, scale: 0.95 }}
+                          transition={{ duration: 0.2, ease: "easeOut" }}
+                          className="absolute top-8 left-1/2 -translate-x-1/2 
+                                     w-max max-w-sm 
+                                     bg-white dark:bg-gray-900 
+                                     border border-gray-200 dark:border-gray-700 
+                                     rounded-xl shadow-2xl"
+                        >
+                          <div className="p-4 grid gap-4">
+                            {item.dropdown.map((subItem) => (
+                              <Link
+                                key={subItem.name}
+                                to={subItem.to}
+                                onClick={() => setActiveDropdown(null)}
+                                className="flex items-start p-3 rounded-lg
+                                           hover:bg-blue-50 dark:hover:bg-gray-800
+                                           transition-colors duration-150"
+                              >
+                                <div className="flex-shrink-0 p-2 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                                  {subItem.icon}
+                                </div>
+                                <div className="ml-3">
+                                  <p className="font-semibold text-sm text-gray-900 dark:text-white">
+                                    {subItem.name}
+                                  </p>
+                                  <p className="text-xs text-gray-500 dark:text-gray-400">
+                                    {subItem.description}
+                                  </p>
+                                </div>
+                              </Link>
+                            ))}
+                          </div>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </motion.li>
                 ))}
               </ul>
             </nav>
 
-            {/* Theme Toggle Button (Desktop) */}
+            {/* Theme Toggle */}
             <motion.button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 rounded-full text-sm font-semibold
-               hover:bg-blue-400 dark:hover:bg-blue-800 transition-colors
-               hidden md:block" // Tetap hidden di mobile
+              className="p-2 rounded-full hidden md:block hover:bg-blue-400 dark:hover:bg-blue-800 transition-colors"
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
             >
-              <AnimatePresence mode="wait" initial={false}>
-                {theme === "dark" ? (
-                  <motion.div /* ... */ >
-                    <Moon size={20} className="text-gray-800 dark:text-white" />
-                  </motion.div>
-                ) : (
-                  <motion.div /* ... */ >
-                    <Sun size={20} className="text-gray-800 dark:text-white" />
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              {theme === "dark" ? (
+                <Moon size={20} className="text-gray-200" />
+              ) : (
+                <Sun size={20} className="text-gray-800" />
+              )}
             </motion.button>
 
             {/* Mobile Menu Button */}
@@ -187,66 +215,94 @@ export default function Navbar() {
                 animate="open"
                 exit="closed"
                 variants={menuVariants}
-                className="fixed inset-0 z-40 bg-white dark:bg-gray-950 md:hidden flex flex-col items-center justify-center" // <-- Sesuaikan BG
+                className="fixed inset-0 z-40 bg-white dark:bg-gray-950 md:hidden flex flex-col items-center justify-center"
               >
                 <motion.button
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="absolute top-8 right-8 text-gray-800 dark:text-white"
-                  initial={{ scale: 0, opacity: 0 }}
-                  animate={{ scale: 1, opacity: 1 }}
-                  exit={{ scale: 0, opacity: 0 }}
-                  transition={{ delay: 0.2 }}
                 >
                   <X size={32} />
                 </motion.button>
 
                 <motion.ul
                   variants={listVariants}
-                  className="flex flex-col items-center justify-center h-full space-y-8"
+                  className="flex flex-col items-center space-y-6 w-full px-8"
                 >
                   {navItems.map((item) => (
-                    <motion.li key={item.name} variants={itemVariants}>
-                      <a
-                        onClick={() => handleScrollTo(item.href)}
-                        className="text-4xl font-bold text-gray-800 dark:text-white cursor-pointer"
-                      >
-                        {item.name}
-                      </a>
+                    <motion.li
+                      key={item.name}
+                      variants={itemVariants}
+                      className="w-full"
+                    >
+                      {item.dropdown ? (
+                        <div className="w-full">
+                          <button
+                            onClick={() =>
+                              setOpenMobileItem(
+                                openMobileItem === item.name ? null : item.name
+                              )
+                            }
+                            className="flex items-center justify-between w-full text-3xl font-semibold text-gray-800 dark:text-white"
+                          >
+                            <span>{item.name}</span>
+                            <ChevronDown
+                              size={24}
+                              className={`transition-transform duration-300 ${
+                                openMobileItem === item.name ? "rotate-180" : ""
+                              }`}
+                            />
+                          </button>
+
+                          <AnimatePresence>
+                            {openMobileItem === item.name && (
+                              <motion.ul
+                                initial={{ height: 0, opacity: 0, marginTop: 0 }}
+                                animate={{ height: "auto", opacity: 1, marginTop: "16px" }}
+                                exit={{ height: 0, opacity: 0, marginTop: 0 }}
+                                className="overflow-hidden space-y-4 pl-5 ml-2 border-l-2 border-gray-200 dark:border-gray-700"
+                              >
+                                {item.dropdown.map((subItem) => (
+                                  <li key={subItem.name}>
+                                    <Link
+                                      to={subItem.to}
+                                      onClick={() => setIsMobileMenuOpen(false)}
+                                      className="flex items-center justify-start gap-3 
+                                                 text-xl text-gray-700 dark:text-gray-300 
+                                                 hover:text-blue-500 dark:hover:text-blue-400"
+                                    >
+                                      {React.cloneElement(subItem.icon, { size: 18 })}
+                                      <span>{subItem.name}</span>
+                                    </Link>
+                                  </li>
+                                ))}
+                              </motion.ul>
+                            )}
+                          </AnimatePresence>
+                        </div>
+                      ) : (
+                        <Link
+                          to={item.to}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block w-full text-left text-3xl font-semibold text-gray-800 dark:text-white"
+                        >
+                          {item.name}
+                        </Link>
+                      )}
                     </motion.li>
                   ))}
-                  
-                  {/* Theme Toggle di Mobile Menu */}
-                  <motion.li variants={itemVariants}>
+
+                  <motion.li variants={itemVariants} className="pt-6">
                     <motion.button
                       onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                      className="p-3 rounded-full text-sm font-semibold
-                       hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors"
+                      className="p-3 rounded-full hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}
                     >
-                      <AnimatePresence mode="wait" initial={false}>
-                        {theme === "dark" ? (
-                          <motion.div
-                            key="moon-mobile"
-                            initial={{ y: -20, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: 20, opacity: 0 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <Moon size={24} className="text-gray-800 dark:text-white" />
-                          </motion.div>
-                        ) : (
-                          <motion.div
-                            key="sun-mobile"
-                            initial={{ y: 20, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            exit={{ y: -20, opacity: 0 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <Sun size={24} className="text-gray-800 dark:text-white" />
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
+                      {theme === "dark" ? (
+                        <Moon size={24} className="text-white" />
+                      ) : (
+                        <Sun size={24} className="text-gray-800" />
+                      )}
                     </motion.button>
                   </motion.li>
                 </motion.ul>
