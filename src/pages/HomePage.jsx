@@ -1,12 +1,9 @@
-import React from 'react'
+import React from 'react';
+import HeroSection from '../components/HeroSection.jsx';
 
 function HomePage() {
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <h1 className="text-4xl font-bold">Welcome to the Home Page</h1>
-      
-      
-    </div>
+    <HeroSection />
   )
 }
 
