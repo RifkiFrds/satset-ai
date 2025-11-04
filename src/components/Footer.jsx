@@ -29,7 +29,7 @@ export default function Footer() {
             size={16}
           />
           <span>by</span>
-          <span className="font-semibold text-gray-80">SATSET AI</span>
+          <span className="font-semibold text-gray-80">SATAI</span>
         </div>
         <p className="text-xs mt-2 text-white/50">
           © {new Date().getFullYear()} All rights reserved.
