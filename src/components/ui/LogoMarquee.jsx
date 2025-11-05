@@ -1,42 +1,70 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import gemini from "../../assets/images/gemini-ai.png";
+import openai from "../../assets/images/open-ai.png";
+import netlify from "../../assets/images/netlify.png";
+import claude from "../../assets/images/claude-ai.png";
+import mistral from "../../assets/images/mistral-ai.png";
+import replicate from "../../assets/images/replicate-brand.png";
 
-// Ganti teks ini dengan path ke logo SVG Anda nanti
+// Logo list
 const logos = [
-  "Gemini",
-  "OpenAI",
-  "Llama",
-  "Claude",
-  "Mistral",
-  "Replicate",
+  { src: gemini, alt: "Gemini" },
+  { src: openai, alt: "OpenAI" },
+  { src: netlify, alt: "Netlify" },
+  { src: claude, alt: "Claude" },
+  { src: mistral, alt: "Mistral" },
+  { src: replicate, alt: "Replicate" },
 ];
 
-// Gandakan array untuk loop yang mulus
+// Gandakan array agar loop marquee mulus
 const allLogos = [...logos, ...logos];
 
 export default function LogoMarquee() {
+  const [duration, setDuration] = useState(15);
+
+  useEffect(() => {
+    // Fungsi untuk update durasi berdasarkan ukuran layar
+    const updateDuration = () => {
+      if (window.innerWidth < 768) {
+        setDuration(7); // Mobile (md ke bawah)
+      } else {
+        setDuration(15); // Desktop
+      }
+    };
+
+    updateDuration(); // Jalankan saat pertama render
+    window.addEventListener("resize", updateDuration); // Update saat resize
+
+    return () => window.removeEventListener("resize", updateDuration);
+  }, []);
+
   return (
-    <div className="w-full max-w-4xl mx-auto overflow-hidden" aria-hidden="true">
+    <div
+      className="w-full max-w-4xl mx-auto overflow-hidden py-2 sm:py-3"
+      aria-hidden="true"
+    >
       <motion.div
         className="flex"
         animate={{
-          x: ["0%", "-100%"], // Animasi dari 0% ke -100%
+          x: ["0%", "-100%"],
         }}
         transition={{
           ease: "linear",
-          duration: 20, // Durasi 20 detik
-          repeat: Infinity, // Ulangi selamanya
+          duration: duration,
+          repeat: Infinity,
         }}
       >
         {allLogos.map((logo, index) => (
           <div
             key={index}
-            className="flex-shrink-0 w-48 flex justify-center items-center"
+            className="flex-shrink-0 w-36 sm:w-44 md:w-48 flex justify-center items-center"
           >
-            <span className="text-xl font-medium text-gray-500 dark:text-gray-400">
-              {/* Ganti <span> ini dengan <img> nanti */}
-              {logo}
-            </span>
+            <img
+              src={logo.src}
+              alt={logo.alt}
+              className="h-8 sm:h-9 md:h-10 object-contain opacity-80 hover:opacity-100 transition-opacity duration-300"
+            />
           </div>
         ))}
       </motion.div>
