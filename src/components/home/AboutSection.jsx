@@ -65,16 +65,6 @@ export default function AboutSection() {
           <em>Vite, Tailwind CSS, Serverless, dan Replicate API</em> — untuk
           memastikan performa yang ringan, cepat, dan aman.
         </p>
-
-        <Button
-          variant="primary"
-          size="lg"
-          rounded="full"
-          as="a"
-          href="/contributors"
-        >
-          Lihat Kontributor
-        </Button>
       </motion.div>
 
       {/* RIGHT ILLUSTRATION */}
