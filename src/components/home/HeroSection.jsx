@@ -9,14 +9,14 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="pt-32 md:pt-36 lg:pt-40 pb-20 md:pb-24 lg:pb-28 container mx-auto px-4 sm:px-6 text-center flex flex-col items-center"
+      className="pt-27 md:pt-26 lg:pt-40 pb-20 md:pb-24 lg:pb-28 container mx-auto px-4 sm:px-6 text-center flex flex-col items-center"
     >
       {/* HEADING */}
       <motion.h1
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-tight"
+        className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white leading-tight"
       >
         Semua Kebutuhan Risetmu,
         <br className="hidden sm:block" />
