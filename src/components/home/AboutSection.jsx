@@ -2,8 +2,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import { MessageSquare, FileText, Zap } from "lucide-react";
-import aiIllustration from "../assets/animations/about-ilustration.json"; // Ganti sesuai file kamu
-import Button from "./ui/Button";
+import aiIllustration from "../../assets/animations/about-ilustration.json"; // Ganti sesuai file kamu
+import Button from "../ui/Button";
 
 export default function AboutSection() {
   return (

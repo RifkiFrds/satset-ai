@@ -84,7 +84,7 @@ export function PointerHighlight({
             }}
           >
             <Pointer
-              className={`h-5 w-5 text-[#EA2222] ${pointerClassName || ""}`}
+              className={`h-5 w-5 text-[#647DEB] ${pointerClassName || ""}`}
             />
           </motion.div>
         </motion.div>

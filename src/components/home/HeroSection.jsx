@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import Button from "../components/ui/Button";
-import { PointerHighlight } from "../components/ui/PointerHighlight";
-import LogoMarquee from "../components/ui/LogoMarquee";
+import Button from "../ui/Button";
+import { PointerHighlight } from "../ui/PointerHighlight";
+import LogoMarquee from "../ui/LogoMarquee";
 
 export default function HeroSection() {
   return (
@@ -26,7 +26,7 @@ export default function HeroSection() {
           rectangleClassName="border-[#647DEB]"
           pointerClassName="text-[#647DEB]"
         >
-          <span className="bg-gradient-to-r from-[#C74559] to-[#EA2222] text-transparent bg-clip-text">
+          <span className="bg-gradient-to-r from-[#647DEB] to-[#647DEB] text-transparent bg-clip-text">
             Terintegrasi AI
           </span>
         </PointerHighlight>
