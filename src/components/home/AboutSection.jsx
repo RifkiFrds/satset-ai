@@ -21,9 +21,10 @@ export default function AboutSection() {
       >
         <h2 className="text-4xl md:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6">
           Meningkatkan Produktivitas Mahasiswa dengan{" "}
-        <span className="bg-gradient-to-r from-[#E03C4E] via-[#7A5EEB] to-[#3C8CE7] text-transparent bg-clip-text">
-            SATSET AI
-        </span>
+       <span className="bg-gradient-to-r from-blue-900 to-[#647DEB] bg-clip-text text-transparent">
+            SATSET {" "}
+            <span className='text-[#EA2222]'>AI</span>
+          </span>
 
         </h2>
 

@@ -11,8 +11,9 @@ const HeroSection = () => {
         <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-gray-900">
           Temui Tim {" "}
           {/* Sorotan gradien biru, konsisten dengan branding */}
-          <span className="bg-gradient-to-r from-blue-500 to-blue-700 bg-clip-text text-transparent">
-            SATSET AI
+          <span className="bg-gradient-to-r  from-blue-900 to-[#647DEB] bg-clip-text text-transparent">
+            SATSET {" "}
+            <span className='text-[#EA2222]'>AI</span>
           </span>
         </h1>
 
