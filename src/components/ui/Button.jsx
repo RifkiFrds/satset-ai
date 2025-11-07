@@ -20,7 +20,7 @@ export default function Button({
 
   // --- Base Style ---
   const baseStyle = `
-    font-bold tracking-wide shadow-lg 
+    font-semibold tracking-wide shadow-lg 
     transition-all duration-300 ease-in-out 
     transform hover:scale-105 hover:shadow-xl 
     focus:outline-none focus:ring-4 focus:ring-opacity-50
@@ -28,9 +28,9 @@ export default function Button({
 
   // --- Size Variants ---
   const sizeStyle = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-8 py-3 text-base',
-    lg: 'px-10 py-4 text-lg',
+    sm: 'px-4 py-1.5 text-sm',
+    md: 'px-5 py-2.5 text-base', 
+    lg: 'px-6 py-3 text-lg',
   };
 
   // --- Rounded Variants ---
@@ -46,12 +46,12 @@ export default function Button({
   // --- Variant Styles 
   const variantStyle = {
     primary: `
-      bg-[#647DEB] text-white 
+      bg-[#647DEB] text-gray-100 
       border-2 border-[#647DEB] 
       focus:ring-[#647DEB]/50
     `,
     secondary: `
-      bg-white text-gray-900 
+      bg-white text-gray-700 
       border-2 border-[#647DEB]/50 
       hover:bg-[#647DEB]/5 hover:border-[#647DEB]
       focus:ring-[#647DEB]/50

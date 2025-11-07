@@ -19,7 +19,7 @@ export default function AboutSection() {
         viewport={{ once: true }}
         className="text-center lg:text-left"
       >
-        <h2 className="text-4xl md:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6">
+        <h2 className="text-4xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
           Meningkatkan Produktivitas Mahasiswa dengan{" "}
        <span className="bg-gradient-to-r from-blue-900 to-[#647DEB] bg-clip-text text-transparent">
             SATSET {" "}

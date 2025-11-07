@@ -1,7 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { MessageCircle, Brain, Sparkles } from "lucide-react";
+import { MessageCircle, Brain, Sparkles, MessageCircleCode } from "lucide-react";
 import chatbotIllustration from "../../assets/images/ai-search.webp";
+import Button from "../ui/Button";
+import { NavLink } from "react-router-dom";
 
 export default function ChatbotSection() {
   return (
@@ -86,6 +88,21 @@ export default function ChatbotSection() {
             </div>
           ))}
         </div>
+        
+      {/* CTA */}
+                <div className="mt-12 flex justify-start">
+                  <NavLink to="/features/chat-bot-ai">
+                    <Button
+                      variant="secondary"
+                      size="md"
+                      className="flex items-center gap-2"
+                      rounded="full"
+                    >
+                      Coba Chatbot Interaktif
+                      <MessageCircleCode size={16} />
+                    </Button>
+                  </NavLink>
+                </div>
       </motion.div>
     </section>
   );
