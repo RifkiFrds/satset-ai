@@ -1,47 +1,60 @@
-import Groq from "groq-sdk";
+import Replicate from "replicate";
 
-export default async (req, res) => {
+export const handler = async (event) => {
   try {
-    const { topic, style = "formal akademik" } = JSON.parse(req.body);
+    const { topic, style = "formal akademik" } = JSON.parse(event.body);
 
-    const client = new Groq({
-      apiKey: process.env.GROQ_API_KEY,
+    const replicate = new Replicate({
+      auth: process.env.REPLICATE_API_KEY,
     });
 
     const prompt = `
-Kamu adalah asisten akademik. Buat kerangka makalah dengan struktur berikut:
+Anda adalah asisten akademik ahli. Buat kerangka makalah (outline) yang mendetail dengan struktur berikut:
 
-1. Judul
-2. Latar Belakang
-3. Rumusan Masalah
-4. Tujuan Penelitian
-5. Tinjauan Pustaka
-6. Metodologi
-7. Pembahasan
-8. Kesimpulan
-9. Daftar Pustaka (contoh format APA)
+1.  **Judul** (Buat judul yang spesifik dan menarik)
+2.  **Latar Belakang** (Jelaskan masalah, konteks, dan urgensi topik)
+3.  **Rumusan Masalah** (Poin-poin pertanyaan penelitian)
+4.  **Tujuan Penelitian** (Poin-poin tujuan yang ingin dicapai)
+5.  **Tinjauan Pustaka** (Sebutkan 3-4 sub-topik teori/penelitian terkait)
+6.  **Metodologi Penelitian** (Jelaskan metode yang disarankan)
+7.  **Pembahasan** (Buat 3-4 sub-bab utama untuk analisis)
+8.  **Kesimpulan & Saran** (Ringkasan temuan dan saran)
+9.  **Daftar Pustaka** (Berikan 3 contoh referensi fiktif format APA)
 
 Topik: ${topic}
 Gaya bahasa: ${style}
 Gunakan bahasa Indonesia yang baku dan jelas.
-    `;
+Berikan jawaban HANYA dalam format Markdown yang rapi.
+`;
 
-    const response = await client.chat.completions.create({
-      model: "mixtral-8x7b",
-      messages: [
-        { role: "system", content: "Kamu adalah AI penulis akademik." },
-        { role: "user", content: prompt },
-      ],
-      temperature: 0.6,
-    });
+    // Kita gunakan model Llama 3 8B Instruct dari Meta
+    const output = await replicate.run(
+      "meta/meta-llama-3-8b-instruct",
+      {
+        input: {
+          prompt: prompt,
+          system_prompt: "Kamu adalah AI penulis akademik yang ahli dalam membuat kerangka makalah.",
+          temperature: 0.6,
+        }
+      }
+    );
 
-    return res.json({
-      success: true,
-      output: response.choices[0].message.content,
-    });
+    // Replicate mengembalikan array, kita gabungkan
+    const markdownOutput = output.join("");
+
+    return {
+      statusCode: 200,
+      body: JSON.stringify({
+        success: true,
+        output: markdownOutput,
+      }),
+    };
 
   } catch (err) {
     console.error(err);
-    return res.status(500).json({ success: false, error: err.message });
+    return {
+      statusCode: 500,
+      body: JSON.stringify({ success: false, error: err.message }),
+    };
   }
 };
