@@ -11,7 +11,7 @@ export const handler = async (event) => {
     const prompt = messages.map(m => `${m.role}: ${m.content}`).join("\n");
 
     const output = await replicate.run(
-      "meta/meta-llama-3-8b-instruct",
+      "ibm-granite/granite-3.3-8b-instruct",
       {
         input: {
           prompt: prompt,

@@ -9,7 +9,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="pt-27 md:pt-26 lg:pt-40 pb-20 md:pb-24 lg:pb-28 container mx-auto px-4 sm:px-6 text-center flex flex-col items-center"
+      className="pt-30 pb-12 container mx-auto px-4 text-center flex flex-col items-center"
     >
       {/* HEADING */}
       <motion.h1
@@ -52,12 +52,22 @@ export default function HeroSection() {
         className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-10 sm:mt-12 w-full sm:w-auto"
       >
         <Link to="/chat" className="w-full sm:w-auto">
-          <Button variant="primary" size="lg" rounded="full" className="w-full sm:w-auto">
+          <Button
+            variant="primary"
+            size="lg"
+            rounded="full"
+            className="w-full sm:w-auto"
+          >
             Mulai Sekarang
           </Button>
         </Link>
         <Link to="/contributor" className="w-full sm:w-auto">
-          <Button variant="secondary" size="lg" rounded="full" className="w-full sm:w-auto">
+          <Button
+            variant="secondary"
+            size="lg"
+            rounded="full"
+            className="w-full sm:w-auto"
+          >
             Lihat Kontributor
           </Button>
         </Link>
@@ -84,10 +94,12 @@ export default function HeroSection() {
 
         {/* DESCRIPTION */}
         <p className="max-w-md sm:max-w-2xl text-xs sm:text-sm md:text-base text-gray-500 dark:text-gray-400 leading-relaxed px-4 sm:px-0">
-          <strong className="text-gray-800 dark:text-gray-200">SATSET AI</strong>{" "}
-          dibangun di atas kombinasi model bahasa, analitik, dan pembelajaran mesin —
-          dirancang untuk memahami ide, menjawab pertanyaan, dan menciptakan solusi
-          yang efektif.
+          <strong className="text-gray-800 dark:text-gray-200">
+            SATSET AI
+          </strong>{" "}
+          dibangun di atas kombinasi model bahasa, analitik, dan pembelajaran
+          mesin — dirancang untuk memahami ide, menjawab pertanyaan, dan
+          menciptakan solusi yang efektif.
         </p>
 
         <div className="w-full max-w-5xl mt-4 sm:mt-6">

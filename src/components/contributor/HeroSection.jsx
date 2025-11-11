@@ -1,28 +1,27 @@
-import React from 'react';
+import React from "react";
+import { motion } from "framer-motion";
 
 const HeroSection = () => {
   return (
-    // Section wrapper dengan padding vertikal
-    <section className="w-full py-20 md:py-32">
-      {/* Kontainer untuk membatasi lebar dan memusatkan konten */}
-      <div className="container mx-auto max-w-4xl px-4 text-center">
-        
-        {/* Judul Utama */}
+    <section className="w-full py-20 md:py-30">
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
+        className="container mx-auto max-w-4xl px-4 text-center"
+      >
         <h1 className="text-4xl md:text-6xl font-bold tracking-tighter text-gray-900">
-          Temui Tim {" "}
-          {/* Sorotan gradien biru, konsisten dengan branding */}
-          <span className="bg-gradient-to-r  from-blue-900 to-[#647DEB] bg-clip-text text-transparent">
-            SATSET {" "}
-            <span className='text-[#EA2222]'>AI</span>
+          Temui Tim{" "}
+          <span className="bg-gradient-to-r from-blue-900 to-[#647DEB] bg-clip-text text-transparent">
+            SATSET <span className="text-[#EA2222]">AI</span>
           </span>
         </h1>
 
-        {/* Sub-Judul/Deskripsi */}
         <p className="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-neutral-700">
           Kami adalah tim mahasiswa yang bersemangat, berkolaborasi untuk
           membangun alat yang bermanfaat bagi produktivitas akademik Anda.
         </p>
-      </div>
+      </motion.div>
     </section>
   );
 };

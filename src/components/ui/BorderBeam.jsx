@@ -21,7 +21,9 @@ export const BorderBeam = ({
   speedMultiplier = 1,
 }) => {
   // Hitung durasi aktual berdasarkan speed multiplier
-  const actualDuration = speedMultiplier ? duration / speedMultiplier : duration;
+  const actualDuration = speedMultiplier
+    ? duration / speedMultiplier
+    : duration;
 
   // Efek cahaya (glow)
   const glowEffect =
@@ -43,7 +45,7 @@ export const BorderBeam = ({
           "absolute aspect-square",
           "bg-gradient-to-l from-[var(--color-from)] via-[var(--color-to)] to-transparent",
           pauseOnHover && "group-hover:animation-play-state-paused",
-          className
+          className,
         )}
         style={{
           width: size,

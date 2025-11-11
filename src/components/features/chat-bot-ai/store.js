@@ -14,14 +14,15 @@ export const useChatStore = create(
       addMessage: (chatId, msg) =>
         set((s) => ({
           chats: s.chats.map((c) =>
-            c.id === chatId ? { ...c, messages: [...c.messages, msg] } : c
+            c.id === chatId ? { ...c, messages: [...c.messages, msg] } : c,
           ),
         })),
 
       deleteChat: (id) =>
         set((s) => {
           const next = s.chats.filter((c) => c.id !== id);
-          const nextId = s.currentChatId === id ? (next[0]?.id || null) : s.currentChatId;
+          const nextId =
+            s.currentChatId === id ? next[0]?.id || null : s.currentChatId;
           return { chats: next, currentChatId: nextId };
         }),
 
@@ -30,6 +31,6 @@ export const useChatStore = create(
           chats: s.chats.map((c) => (c.id === id ? { ...c, title } : c)),
         })),
     }),
-    { name: "satset-chat-history" }
-  )
+    { name: "satset-chat-history" },
+  ),
 );

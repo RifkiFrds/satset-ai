@@ -1,6 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { MessageCircle, Brain, Sparkles, MessageCircleCode } from "lucide-react";
+import {
+  MessageCircle,
+  Brain,
+  Sparkles,
+  MessageCircleCode,
+} from "lucide-react";
 import chatbotIllustration from "../../assets/images/ai-search.webp";
 import Button from "../ui/Button";
 import { NavLink } from "react-router-dom";
@@ -40,8 +45,7 @@ export default function ChatbotSection() {
         </p>
 
         <h2 className="text-4xl md:text-4xl font-bold text-gray-900 dark:text-white leading-tight mb-6">
-          Asisten Cerdas untuk{" "}
-          <br />
+          Asisten Cerdas untuk <br />
           <span className="bg-gradient-to-r from-[#C74559] to-[#647DEB] bg-clip-text text-transparent">
             Diskusi, Ide, dan Riset
           </span>
@@ -88,21 +92,21 @@ export default function ChatbotSection() {
             </div>
           ))}
         </div>
-        
-      {/* CTA */}
-                <div className="mt-12 flex justify-start">
-                  <NavLink to="/features/chat-bot-ai">
-                    <Button
-                      variant="secondary"
-                      size="md"
-                      className="flex items-center gap-2"
-                      rounded="full"
-                    >
-                      Coba Chatbot Interaktif
-                      <MessageCircleCode size={16} />
-                    </Button>
-                  </NavLink>
-                </div>
+
+        {/* CTA */}
+        <div className="mt-12 flex justify-start">
+          <NavLink to="/features/chat-bot-ai">
+            <Button
+              variant="secondary"
+              size="md"
+              className="flex items-center gap-2"
+              rounded="full"
+            >
+              Coba Chatbot Interaktif
+              <MessageCircleCode size={16} />
+            </Button>
+          </NavLink>
+        </div>
       </motion.div>
     </section>
   );

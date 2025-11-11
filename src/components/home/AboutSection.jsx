@@ -21,11 +21,9 @@ export default function AboutSection() {
       >
         <h2 className="text-4xl md:text-4xl font-bold tracking-tight text-gray-900 dark:text-white mb-6">
           Meningkatkan Produktivitas Mahasiswa dengan{" "}
-       <span className="bg-gradient-to-r from-blue-900 to-[#647DEB] bg-clip-text text-transparent">
-            SATSET {" "}
-            <span className='text-[#EA2222]'>AI</span>
+          <span className="bg-gradient-to-r from-blue-900 to-[#647DEB] bg-clip-text text-transparent">
+            SATSET <span className="text-[#EA2222]">AI</span>
           </span>
-
         </h2>
 
         <p className="text-gray-600 dark:text-gray-300 text-base md:text-lg leading-relaxed mb-8 max-w-xl mx-auto lg:mx-0">
@@ -60,8 +58,9 @@ export default function AboutSection() {
         </ul>
 
         <p className="text-sm text-gray-500 dark:text-gray-400 mb-8 leading-relaxed">
-          Aplikasi ini dikembangkan oleh <strong>tim mahasiswa beranggotakan 6 orang</strong> sebagai
-          proyek kolaboratif berbasis AI. Dibangun dengan teknologi modern —
+          Aplikasi ini dikembangkan oleh{" "}
+          <strong>tim mahasiswa beranggotakan 6 orang</strong> sebagai proyek
+          kolaboratif berbasis AI. Dibangun dengan teknologi modern —
           <em>Vite, Tailwind CSS, Serverless, dan Replicate API</em> — untuk
           memastikan performa yang ringan, cepat, dan aman.
         </p>

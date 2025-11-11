@@ -20,7 +20,7 @@ export function useChat() {
 
   const activeConversation = useMemo(
     () => chats.find((c) => c.id === currentChatId) || null,
-    [chats, currentChatId]
+    [chats, currentChatId],
   );
 
   const filteredChats = useMemo(() => {
@@ -57,32 +57,98 @@ export function useChat() {
 
   const copyConversation = () => {
     if (!activeConversation) return;
-
     const text = activeConversation.messages
       .map(
-        (m) =>
-          `${m.role === "user" ? "Anda" : "SATSET AI"}:\n${m.content}\n`
+        (m) => `${m.role === "user" ? "Anda" : "SATSET AI"}:\n${m.content}\n`,
       )
       .join("\n");
-
     navigator.clipboard.writeText(text);
   };
 
   const exportToPDF = async () => {
     if (!activeConversation) return;
 
-    const chatElement = document.getElementById("chat-body");
-    if (!chatElement) return;
+    // Buat node sederhana untuk render export (hindari oklch/var CSS)
+    const container = document.createElement("div");
+    container.style.position = "fixed";
+    container.style.left = "-99999px";
+    container.style.top = "0";
+    container.style.width = "794px"; // A4 width @96dpi
+    container.style.padding = "24px";
+    container.style.background = "#ffffff";
+    container.style.color = "#111827";
+    container.style.fontFamily =
+      "ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica Neue, Arial, 'Apple Color Emoji', 'Segoe UI Emoji'";
+    container.style.lineHeight = "1.6";
+    container.style.border = "1px solid #e5e7eb";
+    container.style.borderRadius = "12px";
+    container.style.boxSizing = "border-box";
 
-    const canvas = await html2canvas(chatElement, { scale: 2, useCORS: true });
+    const header = document.createElement("div");
+    header.style.marginBottom = "16px";
+    header.innerHTML = `<div style="font-weight:600;font-size:18px;margin-bottom:4px;">${activeConversation.title || "Percakapan"}</div>
+      <div style="font-size:12px;color:#6b7280;">Diekspor ${new Date().toLocaleString()}</div>`;
+    container.appendChild(header);
+
+    activeConversation.messages.forEach((m) => {
+      const bubble = document.createElement("div");
+      bubble.style.maxWidth = "680px";
+      bubble.style.padding = "12px 14px";
+      bubble.style.margin =
+        m.role === "assistant" ? "0 0 10px 0" : "0 0 10px auto";
+      bubble.style.borderRadius = "12px";
+      bubble.style.border = "1px solid rgba(0,0,0,0.08)";
+      bubble.style.whiteSpace = "pre-wrap";
+      bubble.style.wordBreak = "break-word";
+      if (m.role === "assistant") {
+        bubble.style.background = "rgba(249,250,251,1)";
+        bubble.style.color = "#111827";
+      } else {
+        bubble.style.background = "rgba(243,244,246,0.6)";
+        bubble.style.color = "#1f2937";
+        bubble.style.textAlign = "right";
+      }
+      bubble.textContent = m.content;
+      container.appendChild(bubble);
+    });
+
+    document.body.appendChild(container);
+
+    // Render aman ke canvas
+    const canvas = await html2canvas(container, {
+      scale: 2,
+      backgroundColor: "#ffffff",
+      useCORS: true,
+      logging: false,
+    });
+
     const imgData = canvas.toDataURL("image/png");
-
     const pdf = new jsPDF("p", "mm", "a4");
-    const pdfWidth = pdf.internal.pageSize.getWidth();
-    const pdfHeight = (canvas.height * pdfWidth) / canvas.width;
+    const pdfW = pdf.internal.pageSize.getWidth();
+    const pdfH = (canvas.height * pdfW) / canvas.width;
+    let y = 0;
 
-    pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
+    // Jika tinggi lebih dari 1 halaman, slice manual
+    let remainingHeight = pdfH;
+    let position = 0;
+    const pageH = pdf.internal.pageSize.getHeight();
+
+    if (pdfH <= pageH) {
+      pdf.addImage(imgData, "PNG", 0, 0, pdfW, pdfH);
+    } else {
+      while (remainingHeight > 0) {
+        pdf.addImage(imgData, "PNG", 0, y, pdfW, pdfH);
+        remainingHeight -= pageH;
+        position -= pageH;
+        if (remainingHeight > 0) {
+          pdf.addPage();
+          y = 0;
+        }
+      }
+    }
+
     pdf.save(`${activeConversation.title || "Percakapan"}.pdf`);
+    document.body.removeChild(container);
   };
 
   const handleSubmit = async (text) => {
@@ -100,7 +166,9 @@ export function useChat() {
       const res = await fetch("/.netlify/functions/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: chat.messages.concat({ role: "user", content: text }) }),
+        body: JSON.stringify({
+          messages: chat.messages.concat({ role: "user", content: text }),
+        }),
       });
 
       const data = await res.json();

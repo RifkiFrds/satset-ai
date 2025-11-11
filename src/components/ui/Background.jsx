@@ -26,7 +26,7 @@ const StripesBackground = ({
         width,
         height,
         opacity,
-        className
+        className,
       )}
     />
   );

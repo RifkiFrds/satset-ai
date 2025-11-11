@@ -69,8 +69,8 @@ export default function JurnalSection() {
           </h2>
 
           <p className="text-gray-300 text-lg leading-relaxed mb-10 max-w-xl">
-            SATSET AI memproses jurnal ilmiah dengan teknologi NLP modern
-            untuk menganalisis struktur, metodologi, dan hasil penelitian secara
+            SATSET AI memproses jurnal ilmiah dengan teknologi NLP modern untuk
+            menganalisis struktur, metodologi, dan hasil penelitian secara
             otomatis. Dapatkan insight mendalam tanpa membaca ratusan halaman.
           </p>
 

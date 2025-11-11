@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Menu } from "lucide-react";
+import { motion } from "framer-motion";
 import { useUIStore } from "../../../../store/uiStore";
 import { useChat } from "../hooks/useChat";
 import ChatSidebar from "./ChatSidebar";
@@ -16,8 +16,7 @@ export default function ChatLayout() {
     handleNewConversation,
     handleSwitchConversation,
     handleDeleteConversation,
-    handleRenameConversation,
-   renameCurrentConversation,
+    renameCurrentConversation,
     copyConversation,
     exportToPDF,
     handleSubmit,
@@ -28,49 +27,56 @@ export default function ChatLayout() {
 
   useEffect(() => {
     if (chats.length === 0) handleNewConversation();
-  }, [chats.length]);
+  }, [chats.length]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
-    <div className="flex h-screen bg-white dark:bg-[#0B0F29] text-gray-900 dark:text-white overflow-hidden">
-      <ChatSidebar
-        sidebarOpen={sidebarOpen}
-        onClose={toggleSidebar}
-        chats={chats}
-        activeId={activeConversationId}
-        onSwitch={handleSwitchConversation}
-        onNew={handleNewConversation}
-        onDelete={handleDeleteConversation}
-        onRename={handleRenameConversation}
-        searchTerm={searchTerm}
-        onSearch={setSearchTerm}
-      />
-
-      <div className="relative flex flex-col flex-1 min-w-0">
-        <button
-          onClick={toggleSidebar}
-          className="lg:hidden absolute top-4 left-4 z-20 bg-[#647DEB] hover:bg-[#5267d4] text-white p-2 rounded-lg shadow-md"
-        >
-          <Menu size={20} />
-        </button>
-
-        <ChatHeader
-          title={activeConversation?.title || "Percakapan Baru"}
-          onToggleSidebar={toggleSidebar}
+    <motion.div
+      initial={{ opacity: 0, y: 16 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.35, ease: "easeOut" }}
+      className="h-screen flex justify-center dark:bg-[#0B0F29] text-gray-900 dark:text-white"
+    >
+      <div
+        className={`
+          w-full max-w-6xl h-full grid grid-cols-1 
+          ${sidebarOpen ? "lg:grid-cols-[288px_1fr]" : "lg:grid-cols-[1fr]"} 
+          border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden shadow-xl
+        `}
+      >
+        <ChatSidebar
+          sidebarOpen={sidebarOpen}
+          onClose={toggleSidebar}
+          chats={chats}
+          activeId={activeConversationId}
+          onSwitch={handleSwitchConversation}
+          onNew={handleNewConversation}
+          onDelete={handleDeleteConversation}
           onRename={renameCurrentConversation}
-          onCopy={copyConversation}
-          onExport={exportToPDF}
-          onDelete={() => handleDeleteConversation(activeConversationId)}
+          searchTerm={searchTerm}
+          onSearch={setSearchTerm}
         />
 
-        <div className="flex-1 overflow-y-auto">
-          <ChatBody messages={activeConversation?.messages || []} isLoading={isLoading} />
+        <div className="flex flex-col relative bg-white dark:bg-[#0B0F29] min-h-0">
+          <ChatHeader
+            title={activeConversation?.title || "Percakapan Baru"}
+            onToggleSidebar={toggleSidebar}
+            onRename={renameCurrentConversation}
+            onCopy={copyConversation}
+            onExport={exportToPDF}
+            onDelete={() => handleDeleteConversation(activeConversationId)}
+          />
+          <div className="flex-1 overflow-y-auto min-h-0">
+            <ChatBody
+              messages={activeConversation?.messages || []}
+              isLoading={isLoading}
+            />
+          </div>
+          <ChatInputForm
+            disabled={isLoading || !activeConversationId}
+            onSubmit={handleSubmit}
+          />
         </div>
-
-        <ChatInputForm
-          disabled={isLoading || !activeConversationId}
-          onSubmit={handleSubmit}
-        />
       </div>
-    </div>
+    </motion.div>
   );
 }

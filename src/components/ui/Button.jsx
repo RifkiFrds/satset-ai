@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 /**
  * Komponen Tombol Kustom (Primary & Secondary)
@@ -9,41 +9,40 @@ import React from 'react';
  * - className: ...
  * - ...props: ...
  */
-export default function Button({ 
-  variant = 'primary', 
-  size = 'md', 
-  rounded = 'full', 
-  className = '', 
-  children, 
-  ...props 
+export default function Button({
+  variant = "primary",
+  size = "md",
+  rounded = "full",
+  className = "",
+  children,
+  ...props
 }) {
-
   // --- Base Style ---
   const baseStyle = `
     font-semibold tracking-wide shadow-lg 
     transition-all duration-300 ease-in-out 
     transform hover:scale-105 hover:shadow-xl 
     focus:outline-none focus:ring-4 focus:ring-opacity-50
-  `; 
+  `;
 
   // --- Size Variants ---
   const sizeStyle = {
-    sm: 'px-4 py-1.5 text-sm',
-    md: 'px-5 py-2.5 text-base', 
-    lg: 'px-6 py-3 text-lg',
+    sm: "px-4 py-1.5 text-sm",
+    md: "px-5 py-2.5 text-base",
+    lg: "px-6 py-3 text-lg",
   };
 
   // --- Rounded Variants ---
   const roundedStyle = {
-    none: 'rounded-none',
-    sm: 'rounded-sm',
-    md: 'rounded-md',
-    lg: 'rounded-lg',
-    xl: 'rounded-xl',
-    full: 'rounded-full', 
+    none: "rounded-none",
+    sm: "rounded-sm",
+    md: "rounded-md",
+    lg: "rounded-lg",
+    xl: "rounded-xl",
+    full: "rounded-full",
   };
 
-  // --- Variant Styles 
+  // --- Variant Styles
   const variantStyle = {
     primary: `
       bg-[#647DEB] text-gray-100 
@@ -64,7 +63,7 @@ export default function Button({
     ${roundedStyle[rounded]} 
     ${variantStyle[variant]}
     ${className}
-  `; 
+  `;
 
   return (
     <button className={classes} {...props}>

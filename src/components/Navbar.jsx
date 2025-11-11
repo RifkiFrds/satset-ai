@@ -18,23 +18,22 @@ const navItems = [
   { name: "Home", to: "/" },
   {
     name: "Features",
-    to: "/features",
     dropdown: [
       {
         name: "Chat Bot AI",
-        to: "/features/chat-bot-ai",
+        to: "/chat-bot-ai",
         description: "Asisten cerdas untuk menjawab pertanyaan Anda.",
         icon: <MessageSquare size={20} className="text-blue-500" />,
       },
       {
         name: "Review Jurnal AI",
-        to: "/features/review-jurnal-ai",
+        to: "/review-jurnal-ai",
         description: "Analisis dan ringkas paper ilmiah secara instan.",
         icon: <SearchCheck size={20} className="text-green-500" />,
       },
       {
         name: "Template Makalah",
-        to: "/features/template-makalah",
+        to: "/template-makalah",
         description: "Buat kerangka tugas & laporan otomatis.",
         icon: <FileText size={20} className="text-purple-500" />,
       },
@@ -44,7 +43,9 @@ const navItems = [
 ];
 
 export default function Navbar() {
-  const [theme, setTheme] = useState(() => localStorage.getItem("theme") || "light");
+  const [theme, setTheme] = useState(
+    () => localStorage.getItem("theme") || "light",
+  );
   const [showHeader, setShowHeader] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -69,8 +70,14 @@ export default function Navbar() {
   }, [lastScrollY]);
 
   const menuVariants = {
-    open: { clipPath: "circle(1200px at 90% 5%)", transition: { type: "spring", stiffness: 20 } },
-    closed: { clipPath: "circle(20px at 90% 5%)", transition: { type: "spring", stiffness: 400, damping: 40 } },
+    open: {
+      clipPath: "circle(1200px at 90% 5%)",
+      transition: { type: "spring", stiffness: 20 },
+    },
+    closed: {
+      clipPath: "circle(20px at 90% 5%)",
+      transition: { type: "spring", stiffness: 400, damping: 40 },
+    },
   };
 
   const listVariants = {
@@ -117,7 +124,9 @@ export default function Navbar() {
                   <motion.li
                     key={item.name}
                     className="relative group text-sm font-medium text-gray-600 dark:text-gray-300"
-                    onHoverStart={() => item.dropdown && setActiveDropdown(item.name)}
+                    onHoverStart={() =>
+                      item.dropdown && setActiveDropdown(item.name)
+                    }
                     onHoverEnd={() => item.dropdown && setActiveDropdown(null)}
                   >
                     {item.dropdown ? (
@@ -239,7 +248,7 @@ export default function Navbar() {
                           <button
                             onClick={() =>
                               setOpenMobileItem(
-                                openMobileItem === item.name ? null : item.name
+                                openMobileItem === item.name ? null : item.name,
                               )
                             }
                             className="flex items-center justify-between w-full text-3xl font-semibold text-gray-800 dark:text-white"
@@ -256,8 +265,16 @@ export default function Navbar() {
                           <AnimatePresence>
                             {openMobileItem === item.name && (
                               <motion.ul
-                                initial={{ height: 0, opacity: 0, marginTop: 0 }}
-                                animate={{ height: "auto", opacity: 1, marginTop: "16px" }}
+                                initial={{
+                                  height: 0,
+                                  opacity: 0,
+                                  marginTop: 0,
+                                }}
+                                animate={{
+                                  height: "auto",
+                                  opacity: 1,
+                                  marginTop: "16px",
+                                }}
                                 exit={{ height: 0, opacity: 0, marginTop: 0 }}
                                 className="overflow-hidden space-y-4 pl-5 ml-2 border-l-2 border-gray-200 dark:border-gray-700"
                               >
@@ -270,7 +287,9 @@ export default function Navbar() {
                                                  text-xl text-gray-700 dark:text-gray-300 
                                                  hover:text-blue-500 dark:hover:text-blue-400"
                                     >
-                                      {React.cloneElement(subItem.icon, { size: 18 })}
+                                      {React.cloneElement(subItem.icon, {
+                                        size: 18,
+                                      })}
                                       <span>{subItem.name}</span>
                                     </Link>
                                   </li>
@@ -293,7 +312,9 @@ export default function Navbar() {
 
                   <motion.li variants={itemVariants} className="pt-6">
                     <motion.button
-                      onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                      onClick={() =>
+                        setTheme(theme === "dark" ? "light" : "dark")
+                      }
                       className="p-3 rounded-full hover:bg-blue-100 dark:hover:bg-gray-800 transition-colors"
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.9 }}

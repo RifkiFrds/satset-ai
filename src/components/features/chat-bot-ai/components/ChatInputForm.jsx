@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Send } from "lucide-react";
+import Button from "./../../../ui/Button";
 
 export default function ChatInputForm({ onSubmit, disabled }) {
   const [value, setValue] = useState("");
 
-  const handleSend = () => {
+  const send = () => {
     if (!value.trim() || disabled) return;
     onSubmit(value.trim());
     setValue("");
@@ -13,29 +14,30 @@ export default function ChatInputForm({ onSubmit, disabled }) {
   const onKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
-      handleSend();
+      send();
     }
   };
 
   return (
-    <div className="border-t border-gray-200 dark:border-white/10 p-4">
-      <div className="max-w-4xl mx-auto flex items-end gap-2">
+    <div className="border-t border-gray-200 dark:border-white/10 p-2 bg-white dark:bg-[#0B0F29]">
+      <div className="max-w-4xl mx-auto flex items-end gap-3">
         <textarea
           value={value}
           onChange={(e) => setValue(e.target.value)}
           onKeyDown={onKeyDown}
           placeholder="Tulis pesan…"
-          rows={1}
-          className="flex-1 resize-none rounded-lg bg-gray-100 dark:bg-white/10 px-4 py-3 text-sm outline-none"
+          className="flex-1 resize-none rounded-xl bg-gray-50 dark:bg-white/5 px-9 py-2 border border-gray-200 dark:border-white/10 shadow-sm text-sm outline-none focus:ring-2 focus:ring-[#647DEB]/40 transition"
         />
-        <button
-          onClick={handleSend}
+
+        <Button
+          variant="primary"
+          onClick={send}
           disabled={disabled}
-          className="h-11 px-4 rounded-lg bg-[#647DEB] hover:bg-[#5267d4] disabled:opacity-60 text-white inline-flex items-center gap-2"
+          className="h-14 px-5 rounded-xl bg-[#647DEB] hover:bg-[#5267d4] transition shadow-sm text-white flex items-center gap-2 disabled:opacity-50"
         >
           <Send size={18} />
           Kirim
-        </button>
+        </Button>
       </div>
     </div>
   );

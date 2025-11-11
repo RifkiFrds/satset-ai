@@ -15,18 +15,15 @@ export default function ChatSidebar({
 }) {
   return (
     <aside
-      className={`
-        w-72 h-full flex flex-col border-r border-gray-200 dark:border-white/10
-        bg-white dark:bg-[#11172E]
-        transition-transform duration-300
-        fixed top-0 left-0 z-30
-        ${sidebarOpen ? "translate-x-0" : "-translate-x-72"}
-        lg:static lg:translate-x-0
-      `}
+      className={` w-72 h-full flex flex-col border-r border-gray-200 dark:border-white/10 bg-white dark:bg-[#11172E]nlg:pl-2 transition-transform duration-300 absolute inset-y-0 left-0 z-30 ${sidebarOpen ? "translate-x-0" : "-translate-x-72"} lg:static lg:translate-x-0 ${!sidebarOpen && "lg:hidden"} {/* <-- TAMBAHKAN BARIS INI */}
+   `}
     >
       <div className="p-4 flex items-center justify-between border-b border-gray-200 dark:border-white/10">
         <h2 className="font-semibold">Percakapan</h2>
-        <button className="lg:hidden text-gray-400 hover:text-white" onClick={onClose}>
+        <button
+          className="lg:hidden text-gray-400 hover:text-white"
+          onClick={onClose}
+        >
           <X size={20} />
         </button>
       </div>
@@ -72,7 +69,6 @@ export default function ChatSidebar({
                 onDelete(chat.id);
               }}
               className="opacity-0 group-hover:opacity-100 transition text-red-500 hover:text-red-600 p-1"
-              title="Hapus"
             >
               <Trash2 size={16} />
             </button>
