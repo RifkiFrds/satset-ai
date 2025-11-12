@@ -9,7 +9,7 @@ const faqs = [
   {
     question: "Apakah SATSET AI sulit digunakan?",
     answer:
-      "Tidak sama sekali. Platform ini dirancang agar mudah digunakan oleh siapa pun, bahkan tanpa latar belakang teknis. Cukup masukkan kebutuhanmu, dan AI akan menyesuaikan hasilnya secara otomatis.e provide lifetime updates and 1 year of dedicated support with every license.",
+      "Tidak sama sekali. Platform ini dirancang agar mudah digunakan oleh siapa pun, bahkan tanpa latar belakang teknis. Cukup masukkan kebutuhanmu, dan AI akan menyesuaikan hasilnya secara otomatis.",
   },
   {
     question: "Mengapa SATSET AI berbeda dari platform AI lainnya?",
