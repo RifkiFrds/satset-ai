@@ -1,86 +1,93 @@
+import anggiimg from "../../../assets/images/contributor/anggi.png";
+import darisimg from "../../../assets/images/contributor/daris.png";
+import syahrialImg from "../../../assets/images/contributor/syahrial.png";
+import rifkiImg from "../../../assets/images/contributor/rifki.png";
+import zandikaImg from "../../../assets/images/contributor/zandika.png";
+import khatamiImg from "../../../assets/images/contributor/khatami.png";
+
 export const contributorData = [
   {
-    image: "/images/claude-ai.png",
-    title: "Zandika",
-    subtitle: "Flowchart & Sitemap",
+    image: syahrialImg,
+    title: 'Syahrial Hardi Akbar',
+    subtitle: 'Frontend Developer',
     description:
-      "Bertanggung jawab dalam pembuatan struktur alur sistem (flowchart) dan sitemap aplikasi. Fokus pada penyusunan logika.",
+      'Menghadirkan tampilan yang menarik dan interaksi,serta memastikan aplikasi berfungsi dengan benar.',
     socials: {
-      github: "https://github.com/zandika",
-      instagram: "https://instagram.com/zandika",
-      linkedin: "https://linkedin.com/in/zandika",
+      github: 'https://github.com/Yaalleee/',
+      instagram: 'https://www.instagram.com/syahrialalts_',
+      linkedin: 'https://www.linkedin.com/in/syahrial-hardi-akbar-403443347',
     },
-    borderColor: "#4F46E5", // Biru
-    gradient: "linear-gradient(145deg,#4F46E5,#000)",
+    borderColor: '#06B6D4',
+    gradient: 'linear-gradient(135deg,#06B6D4,#000)',
   },
   {
-    image: "https://i.pravatar.cc/300?img=11",
-    title: "Khatami",
-    subtitle: "Flowchart & Sitemap",
+    image: rifkiImg,
+    title: 'Muhammad Rifki Firdaus',
+    subtitle: 'Fullstack Devloper',
     description:
-      "Berperan dalam pembuatan flowchart dan struktur navigasi, memastikan alur pengguna dan fungsionalitas aplikasi terorganisir dengan baik.",
+      'Build. Lead. Innovate. Mengembangkan aplikasi dari frontend hingga backend serta memimpin tim menuju inovasi teknologi.',
     socials: {
-      github: "https://github.com/khatami",
-      linkedin: "https://linkedin.com/in/khatami",
-      instagram: "https://instagram.com/khatami",
+      github: 'https://github.com/rifkifrds/',
+      instagram: 'https://www.instagram.com/frdskii_',
+      linkedin: 'https://likedin.com/in/rifkifrds/',
     },
-    borderColor: "#10B981", // Hijau
-    gradient: "linear-gradient(210deg,#10B981,#000)",
+    borderColor: '#8B5CF6',
+    gradient: 'linear-gradient(225deg,#8B5CF6,#000)',
   },
   {
-    image: "https://i.pravatar.cc/300?img=3",
-    title: "Annggi",
-    subtitle: "Desain UI/UX",
+    image:zandikaImg, 
+    title: 'Zandika Setya Wardana',
+    subtitle: 'Flowchart & Sitemap',
     description:
-      "Bertanggung jawab dalam mendesain antarmuka dan pengalaman pengguna. Fokus pada tampilan yang responsif, modern, dan mudah digunakan.",
+      'Pembuatan struktur alur sistem (flowchart) dan sitemap aplikasi. Fokus pada penyusunan logika dasar dan integrasi antar halaman.',
     socials: {
-      instagram: "https://instagram.com/annggi",
-      linkedin: "https://linkedin.com/in/annggi",
-      github: "https://github.com/annggi",
+      github: 'https://github.com/zandika',
+      instagram: 'https://instagram.com/zandika',
+      linkedin: 'https://linkedin.com/in/zandika',
     },
-    borderColor: "#F59E0B", // Kuning
-    gradient: "linear-gradient(165deg,#F59E0B,#000)",
+    borderColor: '#4F46E5',
+    gradient: 'linear-gradient(145deg,#4F46E5,#000)',
   },
   {
-    image: "https://i.pravatar.cc/300?img=16",
-    title: "Daris",
-    subtitle: "Desain UI/UX",
+    image: khatamiImg,
+    title: 'M Musyaffa Khatami',
+    subtitle: 'Flowchart & Sitemap',
     description:
-      "Mengembangkan desain antarmuka yang menarik dan intuitif. Memastikan setiap elemen visual mendukung pengalaman pengguna yang optimal.",
+      'Pembuatan flowchart dan struktur navigasi, memastikan alur pengguna dan fungsionalitas aplikasi terorganisir dengan baik.',
     socials: {
-      linkedin: "https://linkedin.com/in/daris",
-      instagram: "https://instagram.com/daris",
-      github: "https://github.com/daris",
+      github: 'https://github.com/katami0127',
+      linkedin: 'https://linkedin.com/in/khatami',
+      instagram: 'https://www.instagram.com/khatami_27?igsh=Z29ybTA3MHFqbm5i',
     },
-    borderColor: "#EF4444", // Merah
-    gradient: "linear-gradient(195deg,#EF4444,#000)",
+    borderColor: '#10B981',
+    gradient: 'linear-gradient(210deg,#10B981,#000)',
   },
   {
-    image: "https://i.pravatar.cc/300?img=25",
-    title: "Rifki",
-    subtitle: "Frontend & Backend",
+    image: anggiimg,
+    title: 'Anggi Ayu Aulia',
+    subtitle: 'Desain UI/UX',
     description:
-      "Mengembangkan sisi frontend dan backend aplikasi. Berfokus pada implementasi logika server, integrasi API, dan pengalaman pengguna yang lancar.",
+      'Mendesain tampilan dan alur interaksi pengguna agar lebih efisien dan menarik dan mudah digunakan.',
     socials: {
-      github: "https://github.com/rifkifrds",
-      instagram: "https://instagram.com/rifkifrds",
-      linkedin: "https://linkedin.com/in/rifkifrds",
+      instagram: 'https://www.instagram.com/anggiayuaulia_05?igsh=MnRucWJ6ZGV3aTNl',
+      linkedin: 'https://linkedin.com/in/annggi',
+      github: 'https://github.com/annggi',
     },
-    borderColor: "#8B5CF6", // Ungu
-    gradient: "linear-gradient(225deg,#8B5CF6,#000)",
+    borderColor: '#F59E0B', 
+    gradient: 'linear-gradient(165deg,#F59E0B,#000)',
   },
   {
-    image: "https://i.pravatar.cc/300?img=60",
-    title: "Iyal",
-    subtitle: "Frontend & Backend",
+    image: darisimg,
+    title: 'Muhammad Daris',
+    subtitle: 'Desain UI/UX',
     description:
-      "Berfokus pada pengembangan antarmuka pengguna serta integrasi data di backend. Memastikan performa aplikasi tetap optimal dan konsisten.",
+      'Berperan dalam merancang tampilan antarmuka, dan mengelola aset design prototipe agar sesuai dengan kebutuhan pengguna.',
     socials: {
-      github: "https://github.com/iyal",
-      instagram: "https://instagram.com/iyal",
-      linkedin: "https://linkedin.com/in/iyal",
+      github: 'https://github.com/Darisgithub',
+      instagram: 'https://www.instagram.com/dreamsbull',
+      linkedin: 'https://linkedin.com/in/muhammad-daris-55629b277',
     },
-    borderColor: "#06B6D4", // Cyan
-    gradient: "linear-gradient(135deg,#06B6D4,#000)",
+    borderColor: '#e5e352ff', 
+    gradient: 'linear-gradient(195deg,#EF4444,#000)',
   },
 ];
