@@ -1,20 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import gemini from "../../assets/images/gemini-ai.png";
+import meta from "../../assets/images/meta-ai.png";
 import openai from "../../assets/images/open-ai.png";
 import netlify from "../../assets/images/netlify.png";
 import claude from "../../assets/images/claude-ai.png";
 import mistral from "../../assets/images/mistral-ai.png";
 import replicate from "../../assets/images/replicate-brand.png";
+import granite from "../../assets/images/granite-ai.png";
 
 // Logo list
 const logos = [
-  { src: gemini, alt: "Gemini" },
+  { src: meta, alt: "Meta" },
   { src: openai, alt: "OpenAI" },
   { src: netlify, alt: "Netlify" },
   { src: claude, alt: "Claude" },
   { src: mistral, alt: "Mistral" },
   { src: replicate, alt: "Replicate" },
+  { src: granite, alt: "Granite AI" },
 ];
 
 // Gandakan array agar loop marquee mulus
