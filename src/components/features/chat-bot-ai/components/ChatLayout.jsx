@@ -23,6 +23,9 @@ export default function ChatLayout() {
     isLoading,
     searchTerm,
     setSearchTerm,
+    currentModel,
+    setCurrentModel,
+    availableModels
   } = useChat();
 
   useEffect(() => {
@@ -74,6 +77,9 @@ export default function ChatLayout() {
           <ChatInputForm
             disabled={isLoading || !activeConversationId}
             onSubmit={handleSubmit}
+            currentModel={currentModel}
+          setCurrentModel={setCurrentModel}
+          availableModels={availableModels}
           />
         </div>
       </div>

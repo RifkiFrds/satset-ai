@@ -2,7 +2,9 @@ import Replicate from "replicate";
 
 export const handler = async (event) => {
   try {
-    const { messages } = JSON.parse(event.body);
+    const { messages, model } = JSON.parse(event.body);
+
+    const modelToUse = model || "ibm-granite/granite-3.3-8b-instruct";
 
     const replicate = new Replicate({
       auth: process.env.REPLICATE_API_TOKEN,
@@ -10,8 +12,8 @@ export const handler = async (event) => {
 
     const prompt = messages.map(m => `${m.role}: ${m.content}`).join("\n");
 
-    const output = await replicate.run(
-      "ibm-granite/granite-3.3-8b-instruct",
+   const output = await replicate.run(
+      modelToUse, 
       {
         input: {
           prompt: prompt,

@@ -9,6 +9,8 @@ export function useChat() {
     chats,
     currentChatId,
     setCurrentChat,
+    currentModel,
+    setCurrentModel,
     addChat,
     addMessage,
     deleteChat,
@@ -58,22 +60,18 @@ export function useChat() {
   const copyConversation = () => {
     if (!activeConversation) return;
     const text = activeConversation.messages
-      .map(
-        (m) => `${m.role === "user" ? "Anda" : "SATSET AI"}:\n${m.content}\n`,
-      )
+      .map((m) => `${m.role === "user" ? "Anda" : "SATSET AI"}:\n${m.content}\n`)
       .join("\n");
     navigator.clipboard.writeText(text);
   };
 
   const exportToPDF = async () => {
     if (!activeConversation) return;
-
-    // Buat node sederhana untuk render export (hindari oklch/var CSS)
     const container = document.createElement("div");
     container.style.position = "fixed";
     container.style.left = "-99999px";
     container.style.top = "0";
-    container.style.width = "794px"; // A4 width @96dpi
+    container.style.width = "794px";
     container.style.padding = "24px";
     container.style.background = "#ffffff";
     container.style.color = "#111827";
@@ -86,7 +84,9 @@ export function useChat() {
 
     const header = document.createElement("div");
     header.style.marginBottom = "16px";
-    header.innerHTML = `<div style="font-weight:600;font-size:18px;margin-bottom:4px;">${activeConversation.title || "Percakapan"}</div>
+    header.innerHTML = `<div style="font-weight:600;font-size:18px;margin-bottom:4px;">${
+      activeConversation.title || "Percakapan"
+    }</div>
       <div style="font-size:12px;color:#6b7280;">Diekspor ${new Date().toLocaleString()}</div>`;
     container.appendChild(header);
 
@@ -114,7 +114,6 @@ export function useChat() {
 
     document.body.appendChild(container);
 
-    // Render aman ke canvas
     const canvas = await html2canvas(container, {
       scale: 2,
       backgroundColor: "#ffffff",
@@ -128,7 +127,6 @@ export function useChat() {
     const pdfH = (canvas.height * pdfW) / canvas.width;
     let y = 0;
 
-    // Jika tinggi lebih dari 1 halaman, slice manual
     let remainingHeight = pdfH;
     let position = 0;
     const pageH = pdf.internal.pageSize.getHeight();
@@ -152,14 +150,24 @@ export function useChat() {
   };
 
   const handleSubmit = async (text) => {
+    const modelToUse = useChatStore.getState().currentModel;
     const chat = chats.find((c) => c.id === currentChatId);
     if (!chat || !text.trim()) return;
 
     if (chat.messages.filter((m) => m.role === "user").length === 0) {
       renameChat(currentChatId, text.slice(0, 40));
     }
+    
+    const newMessage = { role: "user", content: text };
+    addMessage(currentChatId, newMessage);
 
-    addMessage(currentChatId, { role: "user", content: text });
+    // [FIX 1] Ambil state TERBARU setelah 'addMessage'
+    const updatedChat = useChatStore
+      .getState()
+      .chats.find((c) => c.id === currentChatId);
+      
+    // [FIX 2] Batasi konteks ke 10 pesan terakhir
+    const messagesToSend = updatedChat.messages.slice(-10);
 
     try {
       setIsLoading(true);
@@ -167,7 +175,8 @@ export function useChat() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          messages: chat.messages.concat({ role: "user", content: text }),
+          messages: messagesToSend, // <-- Mengirim konteks terbatas
+          model: modelToUse,
         }),
       });
 
@@ -199,5 +208,7 @@ export function useChat() {
     copyConversation,
     exportToPDF,
     handleSubmit,
+    currentModel,
+    setCurrentModel,
   };
 }
