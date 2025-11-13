@@ -59,7 +59,11 @@ export default function ChatLayout() {
           onSearch={setSearchTerm}
         />
 
-        <div className="flex flex-col relative bg-white dark:bg-[#0B0F29] min-h-0">
+        <div 
+          className={`flex-col relative bg-white dark:bg-[#0B0F29] min-h-0
+            ${sidebarOpen ? "hidden lg:flex" : "flex"}
+          `}
+        >
           <ChatHeader
             title={activeConversation?.title || "Percakapan Baru"}
             onToggleSidebar={toggleSidebar}

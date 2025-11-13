@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { RocketIcon } from "lucide-react";
 import ChatLayout from "./components/ChatLayout";
 
 export default function ChatBotAIPage() {
@@ -12,9 +13,13 @@ export default function ChatBotAIPage() {
     >
       {/* === HERO SECTION === */}
       <div className="text-center pt-30 pb-10 px-4">
+        <span className="inline-flex items-center gap-2 px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 mb-4">
+            <RocketIcon size={16} className="text-green-500" />
+            Chatbot Interaktif
+          </span>
         <h1 className="text-4xl sm:text-4xl lg:text-6xl font-bold max-w-3xl mx-auto leading-tight">
-          <span className="bg-gradient-to-r from-[#C74559] to-[#647DEB] bg-clip-text text-transparent">
-            ChatBot SATSET AI
+          Chatbot <span className="bg-gradient-to-r from-blue-900 to-[#647DEB] bg-clip-text text-transparent">
+            SATSET <span className="text-[#EA2222]">AI</span>
           </span>
         </h1>
         <p className="mt-3 text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto">

@@ -20,7 +20,7 @@ const navItems = [
     name: "Features",
     dropdown: [
       {
-        name: "Chat Bot AI",
+        name: "Chatbot AI",
         to: "/chat-bot-ai",
         description: "Asisten cerdas untuk menjawab pertanyaan Anda.",
         icon: <MessageSquare size={20} className="text-blue-500" />,

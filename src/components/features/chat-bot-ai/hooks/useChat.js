@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { v4 as uuid } from "uuid";
-import { useChatStore } from "../store";
+import { useChatStore, availableModels } from "../store";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 
@@ -210,5 +210,6 @@ export function useChat() {
     handleSubmit,
     currentModel,
     setCurrentModel,
+    availableModels,
   };
 }

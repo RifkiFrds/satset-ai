@@ -10,13 +10,13 @@ import granite from "../../assets/images/granite-ai.png";
 
 // Logo list
 const logos = [
-  { src: meta, alt: "Meta" },
   { src: openai, alt: "OpenAI" },
-  { src: netlify, alt: "Netlify" },
   { src: claude, alt: "Claude" },
+  { src: meta, alt: "Meta" },
   { src: mistral, alt: "Mistral" },
-  { src: replicate, alt: "Replicate" },
   { src: granite, alt: "Granite AI" },
+  { src: replicate, alt: "Replicate" },
+  { src: netlify, alt: "Netlify" },
 ];
 
 // Gandakan array agar loop marquee mulus

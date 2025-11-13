@@ -2,9 +2,10 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
 export const availableModels = [
+  { id: "openai/gpt-4.1-nano", name: "GPT-4.1" },
+  { id: "anthropic/claude-3.7-sonnet", name: "Claude-3.7"},
   { id: "ibm-granite/granite-3.3-8b-instruct", name: "Granite (IBM)" },
-  { id: "meta/meta-llama-3-8b-instruct", name: "Llama 3 (Meta)" },
-  { id: "mistralai/mistral-7b-instruct-v0.2", name: "Mistral (7B)" },
+  { id: "mistralai/mistral-7b-v0.1", name: "Mistral (7B)" },
 ];
 
 export const useChatStore = create(
