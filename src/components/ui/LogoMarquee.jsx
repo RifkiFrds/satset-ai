@@ -1,22 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import meta from "../../assets/images/meta-ai.png";
-import openai from "../../assets/images/open-ai.png";
-import netlify from "../../assets/images/netlify.png";
-import claude from "../../assets/images/claude-ai.png";
-import mistral from "../../assets/images/mistral-ai.png";
-import replicate from "../../assets/images/replicate-brand.png";
-import granite from "../../assets/images/granite-ai.png";
 
 // Logo list
 const logos = [
-  { src: openai, alt: "OpenAI" },
-  { src: claude, alt: "Claude" },
-  { src: meta, alt: "Meta" },
-  { src: mistral, alt: "Mistral" },
-  { src: granite, alt: "Granite AI" },
-  { src: replicate, alt: "Replicate" },
-  { src: netlify, alt: "Netlify" },
+  { src: "/images/open-ai.png", alt: "OpenAI" },
+  { src: "/images/claude-ai.png", alt: "Claude" },
+  { src: "images/meta-ai.png", alt: "Meta" },
+  { src: "/images/mistral-ai.png", alt: "Mistral" },
+  { src: "/images/granite-ai.png", alt: "Granite AI" },
+  { src: "/images/replicate-brand.png", alt: "Replicate" },
+  { src: "/images/netlify.png", alt: "Netlify" },
 ];
 
 // Gandakan array agar loop marquee mulus

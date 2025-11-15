@@ -1,58 +1,51 @@
 import React from "react";
-import { motion } from "framer-motion"; 
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
     name: "Leslie Alexander",
     role: "Mahasiswa Teknik Informatika",
-    avatar:
-      "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-1.png",
+    avatar: "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-1.png",
     text: "You made it so simple. My new site is so much faster and easier to work with than my old site. I just choose the page, make the change.",
     rating: 5,
   },
   {
     name: "Jenny Wilson",
     role: "Mahasiswi Kedokteran",
-    avatar:
-      "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-female-1.png",
+    avatar: "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-female-1.png",
     text: "I cannot believe that I have got a brand new landing page after getting Omega. It was super easy to edit and publish.",
     rating: 5,
   },
   {
     name: "Jacob Jones",
     role: "Peneliti Sastra",
-    avatar:
-      "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png",
+    avatar: "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-2.png",
     text: "Simply the best. Better than all the rest. I’d recommend this product to beginners and advanced users.",
     rating: 5,
   },
   {
     name: "Kristin Watson",
     role: "Dosen Sosiologi",
-    avatar:
-      "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-female-2.png",
+    avatar: "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-female-2.png",
     text: "This is simply unbelievable! I have never seen a website so beautifully designed and easy to use. Great job, guys!",
     rating: 5,
   },
   {
     name: "Cameron Williamson",
     role: "Mahasiswa DKV",
-    avatar:
-      "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-3.png",
+    avatar: "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-male-3.png",
     text: "Incredible end result! Our sales increased over 400% when we launched our new website. The support team was excellent.",
     rating: 5,
   },
   {
     name: "Darlene Robertson",
     role: "Mahasiswi Ekonomi",
-    avatar:
-      "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-female-3.png",
+    avatar: "https://cdn.rareblocks.xyz/collection/clarity/images/testimonial/4/avatar-female-3.png",
     text: "Absolutely wonderful! I was amazed at the quality of this product. It’s exactly what I’ve been looking for.",
     rating: 5,
   },
 ];
 
-// Gandakan array untuk loop marquee yang mulus
 const allTestimonials = [...testimonials, ...testimonials];
 
 const Star = () => (
@@ -66,16 +59,9 @@ const Star = () => (
   </svg>
 );
 
-// Komponen Card yang Dibuat Ulang (Clean & Modern)
 const TestimonialCard = ({ name, avatar, text, rating, role }) => {
   return (
-    <div
-      className="flex flex-col justify-between overflow-hidden 
-                 bg-white dark:bg-gray-900 
-                 border border-gray-200 dark:border-gray-700
-                 rounded-2xl shadow-lg
-                 mx-4 w-[380px] h-[300px] flex-shrink-0 p-8"
-    >
+    <div className="flex flex-col justify-between overflow-hidden border border-gray-200 dark:border-gray-700 rounded-2xl shadow-lg mx-4 w-[360px] h-[300px] flex-shrink-0 p-8 bg-white/70 dark:bg-[#0F152E]/60 backdrop-blur-sm">
       <div className="flex items-center">
         {Array.from({ length: rating }).map((_, i) => (
           <Star key={i} />
@@ -87,74 +73,55 @@ const TestimonialCard = ({ name, avatar, text, rating, role }) => {
       </blockquote>
 
       <div className="flex items-center mt-6">
-        <img
-          className="w-12 h-12 rounded-full object-cover shrink-0"
-          src={avatar}
-          alt={name}
-        />
+        <img className="w-12 h-12 rounded-full object-cover" src={avatar} alt={name} />
         <div className="ml-4 text-left">
-          <p className="text-base font-semibold text-gray-900 dark:text-white">
-            {name}
-          </p>
-          <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-400">
-            {role}
-          </p>
+          <p className="text-base font-semibold text-gray-900 dark:text-white">{name}</p>
+          <p className="mt-0.5 text-sm text-gray-500 dark:text-gray-400">{role}</p>
         </div>
       </div>
     </div>
   );
 };
 
-// (Marquee Layout)
 export default function TestimonialSection() {
   const marqueeVariants = {
     animate: {
       x: ["0%", "-50%"],
       transition: {
-        x: {
-          repeat: Infinity,
-          repeatType: "loop",
-          duration: 40, // Durasi scroll (makin besar makin lambat)
-          ease: "linear",
-        },
+        repeat: Infinity,
+        duration: 45,
+        ease: "linear",
       },
     },
   };
 
   return (
-    <section className="py-16 sm:py-24 lg:py-32 relative overflow-hidden bg-gray-50 dark:bg-[#0B0F29]">
-      {/* Background Glow (Branded & Subtle) */}
+    <section className="py-10 relative overflow-hidden bg-transparent">
+      
+      {/* SUBTLE GLOW */}
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] 
-                   bg-[radial-gradient(circle_at_center,_rgba(100,125,235,0.1),_transparent_70%)] 
-                   dark:bg-[radial-gradient(circle_at_center,_rgba(100,125,235,0.15),_transparent_70%)]"
-        aria-hidden="true"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] 
+                   bg-[radial-gradient(circle_at_center,rgba(100,125,235,0.07),transparent_70%)]
+                   dark:bg-[radial-gradient(circle_at_center,rgba(100,125,235,0.12),transparent_70%)]
+                   pointer-events-none"
       />
 
       <div className="relative px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
-        {/* Header */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 dark:text-white mb-5">
             Dipercaya oleh{" "}
             <span className="text-[#647DEB]">Ratusan Mahasiswa</span>
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300">
-            Kami tidak hanya membangun tools, kami membangun partner belajar.
-            Lihat apa kata para mahasiswa dan akademisi yang telah menggunakan
-            SATSET AI.
+            Kami membangun partner belajar yang membantu mulai dari awal sampai akhir.
           </p>
         </div>
 
-        {/* Marquee Container */}
         <div className="relative mt-20 [mask-image:linear-gradient(to_right,transparent,white_10%,white_90%,transparent)]">
-          <motion.div
-            className="flex w-max"
-            variants={marqueeVariants}
-            animate="animate"
-          >
+          <motion.div className="flex w-max" variants={marqueeVariants} animate="animate">
             {allTestimonials.map((t, index) => (
               <TestimonialCard
-                key={`marquee-1-${index}`}
+                key={`marquee-${index}`}
                 name={t.name}
                 avatar={t.avatar}
                 text={t.text}

@@ -1,13 +1,7 @@
-import anggiimg from "../../../assets/images/contributor/anggi.png";
-import darisimg from "../../../assets/images/contributor/daris.png";
-import syahrialImg from "../../../assets/images/contributor/syahrial.png";
-import rifkiImg from "../../../assets/images/contributor/rifki.png";
-import zandikaImg from "../../../assets/images/contributor/zandika.png";
-import khatamiImg from "../../../assets/images/contributor/khatami.png";
 
 export const contributorData = [
   {
-    image: syahrialImg,
+    image: "/images/contributor/syahrial.png",
     title: 'Syahrial Hardi Akbar',
     subtitle: 'Frontend Developer',
     description:
@@ -21,7 +15,7 @@ export const contributorData = [
     gradient: 'linear-gradient(135deg,#06B6D4,#000)',
   },
   {
-    image: rifkiImg,
+    image: "/images/contributor/rifki.png",
     title: 'Muhammad Rifki Firdaus',
     subtitle: 'Fullstack Devloper',
     description:
@@ -35,7 +29,7 @@ export const contributorData = [
     gradient: 'linear-gradient(225deg,#8B5CF6,#000)',
   },
   {
-    image:zandikaImg, 
+    image: "/images/contributor/zandika.png", 
     title: 'Zandika Setya Wardana',
     subtitle: 'Flowchart & Sitemap',
     description:
@@ -49,7 +43,7 @@ export const contributorData = [
     gradient: 'linear-gradient(145deg,#4F46E5,#000)',
   },
   {
-    image: khatamiImg,
+    image: "/images/contributor/khatami.png",
     title: 'M Musyaffa Khatami',
     subtitle: 'Flowchart & Sitemap',
     description:
@@ -63,7 +57,7 @@ export const contributorData = [
     gradient: 'linear-gradient(210deg,#10B981,#000)',
   },
   {
-    image: anggiimg,
+    image: "images/contributor/anggi.png",
     title: 'Anggi Ayu Aulia',
     subtitle: 'Desain UI/UX',
     description:
@@ -77,7 +71,7 @@ export const contributorData = [
     gradient: 'linear-gradient(165deg,#F59E0B,#000)',
   },
   {
-    image: darisimg,
+    image: "/images/contributor/daris.png",
     title: 'Muhammad Daris',
     subtitle: 'Desain UI/UX',
     description:

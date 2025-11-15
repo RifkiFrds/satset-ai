@@ -6,14 +6,14 @@ import StripesBackground from "../components/ui/Background.jsx";
 
 export default function Index() {
   return (
-    <div className="relative flex flex-col min-h-screen overflow-hidden bg-base-100">
+    <div className="relative flex flex-col min-h-screen overflow-hidden bg-gray-50 dark:bg-gray-900">
       {/* Navbar */}
       <AppNavbar />
 
       {/* Konten utama dengan background */}
       <main className="relative z-10 flex-1 p-6 lg:p-8 rounded-tl-2xl shadow-inner overflow-hidden">
         <StripesBackground
-          position="right"
+          position="full"
           width="w-full"
           height="h-full"
           opacity="opacity-20"

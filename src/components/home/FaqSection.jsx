@@ -31,13 +31,14 @@ const FAQSection = () => {
   };
 
   return (
-    <section className="py-16 bg-transparent sm:py-20 lg:py-24">
+    <section className="py-16 sm:py-20 lg:py-24 bg-transparent">
       <div className="max-w-3xl px-6 mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-900 sm:text-5xl font-pj">
+        <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 dark:text-white">
           Frequently Asked Questions
         </h2>
-        <p className="mt-4 text-base text-4xl text-gray-600">
-         Cari tahu tentang kami lewat pertanyaan yang paling sering diajukan.
+
+        <p className="mt-4 text-base sm:text-lg text-gray-600 dark:text-gray-300">
+          Cari tahu tentang kami lewat pertanyaan yang paling sering diajukan.
         </p>
 
         <div className="mt-12 space-y-4 text-left">
@@ -48,27 +49,35 @@ const FAQSection = () => {
               <div
                 key={index}
                 onClick={() => toggleFAQ(index)}
-                className={`relative border rounded-2xl p-6 cursor-pointer transition-all duration-300 ${
+                className={`relative border rounded-2xl p-6 cursor-pointer transition-all duration-300 
+                ${
                   isActive
-                    ? "bg-white shadow-xl border-transparent ring-1 ring-transparent"
-                    : "border-gray-200 hover:border-gray-300"
+                    ? "bg-white dark:bg-[#0F152E] border-transparent shadow-xl"
+                    : "border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600"
                 }`}
                 style={
                   isActive
                     ? {
                         boxShadow:
-                          "0 0 30px rgba(68,176,255,0.2), 0 0 30px rgba(255,102,68,0.2)",
+                          "0 0 25px rgba(100, 125, 235, 0.25), 0 0 25px rgba(199, 69, 89, 0.25)",
                         borderImage:
-                          "linear-gradient(90deg,#44ff9a,#44b0ff,#8b44ff,#ff6644,#ebff70) 1",
+                          "linear-gradient(90deg,#647DEB,#C74559,#FFB86C,#8B5CF6) 1",
                       }
                     : {}
                 }
               >
                 <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-semibold text-gray-900">
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                     {faq.question}
                   </h3>
-                  <span className="text-2xl text-gray-500">
+
+                  <span
+                    className={`text-2xl transition-colors ${
+                      isActive
+                        ? "text-[#647DEB]"
+                        : "text-gray-500 dark:text-gray-400"
+                    }`}
+                  >
                     {isActive ? "−" : "+"}
                   </span>
                 </div>
@@ -78,7 +87,9 @@ const FAQSection = () => {
                     isActive ? "max-h-40 mt-3 opacity-100" : "max-h-0 opacity-0"
                   }`}
                 >
-                  <p className="text-gray-600 leading-relaxed">{faq.answer}</p>
+                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
+                    {faq.answer}
+                  </p>
                 </div>
               </div>
             );

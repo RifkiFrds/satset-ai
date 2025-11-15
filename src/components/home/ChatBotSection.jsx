@@ -6,7 +6,6 @@ import {
   Sparkles,
   MessageCircleCode,
 } from "lucide-react";
-import chatbotIllustration from "../../assets/images/ai-search.webp";
 import Button from "../ui/Button";
 import { NavLink } from "react-router-dom";
 
@@ -23,7 +22,7 @@ export default function ChatbotSection() {
       >
         <div className="relative max-w-lg w-full rounded-3xl overflow-hidden bg-white dark:bg-gray-900 shadow-[0_20px_50px_rgba(0,0,0,0.08)] border border-gray-100 dark:border-gray-800">
           <img
-            src={chatbotIllustration}
+            src="/images/ai-search.webp"
             alt="SATSET AI Chatbot Illustration"
             className="w-full h-auto object-cover"
           />

@@ -11,7 +11,6 @@ import {
   FileText,
 } from "lucide-react";
 import { BorderBeam } from "./ui/BorderBeam";
-import logo from "../assets/logo.png";
 import { Link } from "react-router-dom";
 
 const navItems = [
@@ -110,7 +109,7 @@ export default function Navbar() {
             {/* Logo */}
             <Link to="/" className="cursor-pointer">
               <img
-                src={logo}
+                src="/images/logo.png"
                 alt="Logo"
                 className="h-14 w-auto"
                 style={{ objectPosition: "center" }}

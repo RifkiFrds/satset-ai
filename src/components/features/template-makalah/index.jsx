@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { FileText, Sparkles, Download, Loader2 } from 'lucide-react';
+import { FileText, Sparkles, Download, Loader2, ChevronDown } from 'lucide-react';
 import Button from '../../ui/Button';
-import { generateMakalah } from './api'; // Impor API helper
-import { generateDocx } from '../../../lib/DocxGenerator'; // Impor DOCX helper
+import { generateMakalah } from './api';
+import { generateDocx } from '../../../lib/DocxGenerator'; 
 
 // Helper untuk render Markdown sederhana
 const SimpleMarkdown = ({ text }) => {
@@ -54,7 +54,7 @@ export default function TemplateMakalahPage() {
       <div className="max-w-3xl pt-20 pb-10 px-4 mx-auto">
         {/* --- Header --- */}
         <div className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 mb-4">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 text-sm font-medium dark:text-gray-50 rounded-full bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 mb-4">
             <Sparkles size={16} className="text-[#647DEB]" />
             AI Makalah Generator
           </span>
@@ -74,17 +74,32 @@ export default function TemplateMakalahPage() {
               value={topic}
               onChange={(e) => setTopic(e.target.value)}
               placeholder="Contoh: Dampak AI pada pasar kerja..."
-              className="md:col-span-2 w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[#647DEB]"
+              className="md:col-span-2 w-full dark:text-gray-50 px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[#647DEB]"
             />
-            <select
-              value={style}
-              onChange={(e) => setStyle(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[#647DEB]"
-            >
-              <option value="formal akademik">Formal Akademik</option>
-              <option value="kreatif">Kreatif</option>
-              <option value="deskriptif">Deskriptif</option>
-            </select>
+            <div className="relative w-full">
+              <select
+                value={style}
+                onChange={(e) => setStyle(e.target.value)}
+                className="
+                  w-full appearance-none px-4 py-3 pr-12 
+                  rounded-xl border border-gray-300 dark:border-gray-700 
+                  bg-white dark:bg-gray-800 
+                  focus:outline-none focus:ring-2 focus:ring-[#647DEB]
+                  text-gray-800 dark:text-gray-200
+                "
+              >
+                <option value="formal akademik">Formal Akademik</option>
+                <option value="kreatif">Kreatif</option>
+                <option value="deskriptif">Deskriptif</option>
+              </select>
+
+              <ChevronDown 
+                className="
+                  absolute right-4 top-1/2 -translate-y-1/2
+                  w-5 h-5 text-gray-500 dark:text-gray-400 pointer-events-none
+                "
+              />
+            </div>
           </div>
           <Button
             type="submit"

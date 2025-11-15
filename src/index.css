@@ -1,8 +1,14 @@
-@import "tailwindcss";
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --stripe-color: #0006;
+}
+
+.dark {
+  --stripe-color: #fff6;
+}
 
 @keyframes pulse-slow {
   0%,

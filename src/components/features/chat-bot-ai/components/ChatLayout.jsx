@@ -37,7 +37,7 @@ export default function ChatLayout() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, ease: "easeOut" }}
-      className="h-screen flex justify-center dark:bg-[#0B0F29] text-gray-900 dark:text-white"
+      className="h-screen flex justify-center text-gray-900 dark:text-white"
     >
       <div
         className={`

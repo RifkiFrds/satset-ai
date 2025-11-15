@@ -6,7 +6,7 @@ import { reviewJurnal } from './api';
 
 // Komponen Card untuk menampilkan hasil
 const ResultCard = ({ title, content }) => (
-  <div className="bg-white  dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
+  <div className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
     <h3 className="text-lg font-semibold text-[#647DEB] mb-2">{title}</h3>
     <p className="text-gray-700 dark:text-gray-300">{content}</p>
   </div>
@@ -38,7 +38,7 @@ export default function ReviewJurnalPage() {
       <div className="max-w-3xl pt-20 pb-10 px-4 mx-auto">
         {/* --- Header --- */}
         <div className="text-center mb-12">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 text-sm font-medium rounded-full bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 mb-4">
+          <span className="inline-flex items-center gap-2 px-4 py-1.5 text-sm font-medium dark:text-gray-50 rounded-full bg-white dark:bg-gray-800 shadow-sm border border-gray-200 dark:border-gray-700 mb-4">
             <SearchCheck size={16} className="text-green-500" />
             AI Review Jurnal
           </span>
@@ -57,7 +57,7 @@ export default function ReviewJurnalPage() {
             value={inputText}
             onChange={(e) => setInputText(e.target.value)}
             placeholder="Tempelkan teks jurnal Anda di sini..."
-            className="w-full h-48 px-4 py-3 rounded-xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[#647DEB] mb-4 resize-none"
+            className="w-full h-48 px-4 py-3 rounded-xl dark:text-white border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[#647DEB] mb-4 resize-none"
             disabled={isLoading}
           />
           <Button

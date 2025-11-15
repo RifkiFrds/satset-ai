@@ -6,7 +6,7 @@ const StripesBackground = ({
   position = "full",
   width = "w-full",
   height = "h-full",
-  opacity = "opacity-30", // Opacity applies to the div itself
+  opacity = "opacity-30",
 }) => {
   const positionStyles = {
     right: "absolute top-0 right-0",
@@ -20,13 +20,12 @@ const StripesBackground = ({
     <div
       className={clsx(
         "pointer-events-none z-10",
-        "bg-[repeating-linear-gradient(45deg,_#00000066_0px,_#00000066_1px,_transparent_1px,_transparent_6px)]",
-        "dark:bg-[repeating-linear-gradient(45deg,_#ffffff66_0px,_#ffffff66_1px,_transparent_1px,_transparent_6px)]",
+        "bg-[repeating-linear-gradient(45deg,var(--stripe-color)_0px,var(--stripe-color)_1px,transparent_1px,transparent_6px)]",
         positionStyles[position],
         width,
         height,
         opacity,
-        className,
+        className
       )}
     />
   );

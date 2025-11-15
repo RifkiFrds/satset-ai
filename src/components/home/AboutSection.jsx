@@ -1,11 +1,21 @@
 import React from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import { MessageSquare, FileText, Zap } from "lucide-react";
-import aiIllustration from "../../assets/animations/about-ilustration.json"; // Ganti sesuai file kamu
-import Button from "../ui/Button";
 
 export default function AboutSection() {
+
+  const [animationData, setAnimationData] = useState(null);
+
+  useEffect(() => {
+    fetch("/lottie/about-ilustration.json")
+      .then((res) => res.json())
+      .then((data) => setAnimationData(data));
+  }, []);
+
+  if (!animationData) return null;
+
   return (
     <section
       id="about"
@@ -75,7 +85,7 @@ export default function AboutSection() {
         className="w-full flex justify-center"
       >
         <Lottie
-          animationData={aiIllustration}
+           animationData={animationData}
           loop={true}
           className="w-72 sm:w-96 lg:w-[28rem]"
         />

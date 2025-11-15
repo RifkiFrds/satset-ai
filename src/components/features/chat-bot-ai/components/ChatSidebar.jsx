@@ -1,6 +1,5 @@
 import React from "react";
 import { MessageSquare, Plus, Trash2, Search, X } from "lucide-react";
-import logo from "../../../../assets/logo.png";
 
 export default function ChatSidebar({
   sidebarOpen,
@@ -25,7 +24,7 @@ export default function ChatSidebar({
       `}
     >
       <div className="p-4 flex items-center justify-between border-b border-gray-200 dark:border-white/10">
-      <img src={logo} alt="Logo" className="h-12 w-auto flex-shrink-0" />
+      <img src="/images/logo.png" alt="Logo" className="h-12 w-auto flex-shrink-0" />
         <button
           className="lg:hidden text-gray-400 hover:text-white"
           onClick={onClose}

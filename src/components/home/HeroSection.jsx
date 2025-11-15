@@ -9,7 +9,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="pt-30 pb-12 container mx-auto px-4 text-center flex flex-col items-center"
+      className="pt-32 pb-12 container mx-auto px-4 text-center flex flex-col items-center"
     >
       {/* HEADING */}
       <motion.h1

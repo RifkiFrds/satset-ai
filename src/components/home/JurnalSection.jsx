@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { BookOpenCheck, Sparkles, Brain, LineChart } from "lucide-react";
-import journalIllustration from "../../assets/images/jurnal.webp";
 import { NavLink } from "react-router-dom";
 import Button from "../ui/Button";
 
@@ -119,7 +118,7 @@ export default function JurnalSection() {
         >
           <div className="relative w-full max-w-lg">
             <motion.img
-              src={journalIllustration}
+              src="/images/jurnal.webp"
               alt="AI Journal Review"
               className="w-full h-auto rounded-3xl shadow-[0_25px_60px_rgba(100,125,235,0.3)]"
               whileHover={{ scale: 1.03 }}
