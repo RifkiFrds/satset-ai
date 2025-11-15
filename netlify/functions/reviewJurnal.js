@@ -23,9 +23,8 @@ Struktur JSON yang WAJIB digunakan:
 }
 `;
 
-    // Kita gunakan model Llama 3 8B Instruct lagi
     const output = await replicate.run(
-      "meta/meta-llama-3-8b-instruct",
+      "ibm-granite/granite-3.3-8b-instruct",
       {
         input: {
           prompt: prompt,
