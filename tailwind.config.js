@@ -12,7 +12,6 @@ export default {
         'satset-rose': '#C74559',
         'satset-red': '#EA2222',
       },
-      // --- Konfigurasi Anda yang sudah ada ---
       animation: {
         "border-beam": "border-beam calc(var(--duration) * 1s) infinite linear",
         "logo-marquee": "logo-marquee 30s linear infinite",
