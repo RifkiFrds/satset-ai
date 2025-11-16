@@ -57,13 +57,13 @@ export default function JurnalSection() {
             Jurnal Review AI
           </p>
 
-          <h2 className="text-4xl md:text-5xl font-extrabold leading-tight tracking-tight mb-6">
+          <h2 className="text-4xl md:text-4xl font-bold leading-tight tracking-tight mb-6">
             Analisis Jurnal Lebih{" "}
             <span className="relative inline-block">
               <span className="bg-gradient-to-r from-[#C74559] to-[#647DEB] bg-clip-text text-transparent">
                 Cepat, Cerdas, dan Akurat
               </span>
-              <span className="absolute left-0 bottom-0 w-full h-[3px] bg-gradient-to-r from-[#C74559] to-[#647DEB] rounded-full blur-sm opacity-80"></span>
+              <span className="absolute left-0 bottom-0 w-full h-[3px] bg-gradient-to-r from-[#C74559] to-[#647DEB] rounded-full blur-sm opacity-40"></span>
             </span>
           </h2>
 
@@ -95,7 +95,7 @@ export default function JurnalSection() {
 
           {/* CTA */}
           <div className="mt-12 flex justify-start">
-            <NavLink to="/features/review-jurnal-ai">
+            <NavLink to="/review-jurnal-ai">
               <Button
                 variant="primary"
                 size="md"

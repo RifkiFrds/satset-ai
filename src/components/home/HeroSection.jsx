@@ -51,8 +51,9 @@ export default function HeroSection() {
         transition={{ delay: 0.4, duration: 0.6 }}
         className="flex flex-col sm:flex-row justify-center items-center gap-4 mt-10 sm:mt-12 w-full sm:w-auto"
       >
-        <Link to="/chat" className="w-full sm:w-auto">
+        {/* <Link  className="w-full sm:w-auto"> */}
           <Button
+          href="#chat"
             variant="primary"
             size="lg"
             rounded="full"
@@ -60,7 +61,7 @@ export default function HeroSection() {
           >
             Mulai Sekarang
           </Button>
-        </Link>
+        {/* </Link> */}
         <Link to="/contributor" className="w-full sm:w-auto">
           <Button
             variant="secondary"

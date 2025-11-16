@@ -11,7 +11,7 @@ import { NavLink } from "react-router-dom";
 
 export default function ChatbotSection() {
   return (
-    <section className="container mx-auto px-6 py-24 flex flex-col lg:flex-row items-center gap-20">
+    <section id="chat" className="container mx-auto px-6 py-24 flex flex-col lg:flex-row items-center gap-20">
       {/* === LEFT SIDE - ILLUSTRATION === */}
       <motion.div
         initial={{ opacity: 0, x: -40 }}
@@ -94,7 +94,7 @@ export default function ChatbotSection() {
 
         {/* CTA */}
         <div className="mt-12 flex justify-start">
-          <NavLink to="/features/chat-bot-ai">
+          <NavLink to="/chat-bot-ai">
             <Button
               variant="secondary"
               size="md"

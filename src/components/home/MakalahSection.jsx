@@ -77,7 +77,7 @@ export default function MakalahSection() {
           </div>
 
           <div className="flex justify-start">
-            <NavLink to="/features/template-makalah">
+            <NavLink to="/template-makalah">
               <Button
                 variant="secondary"
                 size="md"
