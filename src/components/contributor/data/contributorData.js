@@ -29,34 +29,6 @@ export const contributorData = [
     gradient: 'linear-gradient(225deg,#8B5CF6,#000)',
   },
   {
-    image: "/images/contributor/zandika.png", 
-    title: 'Zandika Setya Wardana',
-    subtitle: 'Flowchart & Sitemap',
-    description:
-      'Pembuatan struktur alur sistem (flowchart) dan sitemap aplikasi. Fokus pada penyusunan logika dasar dan integrasi antar halaman.',
-    socials: {
-      github: 'https://github.com/zandika',
-      instagram: 'https://instagram.com/zandika',
-      linkedin: 'https://linkedin.com/in/zandika',
-    },
-    borderColor: '#4F46E5',
-    gradient: 'linear-gradient(145deg,#4F46E5,#000)',
-  },
-  {
-    image: "/images/contributor/khatami.png",
-    title: 'M Musyaffa Khatami',
-    subtitle: 'Flowchart & Sitemap',
-    description:
-      'Pembuatan flowchart dan struktur navigasi, memastikan alur pengguna dan fungsionalitas aplikasi terorganisir dengan baik.',
-    socials: {
-      github: 'https://github.com/katami0127',
-      linkedin: 'https://linkedin.com/in/khatami',
-      instagram: 'https://www.instagram.com/khatami_27?igsh=Z29ybTA3MHFqbm5i',
-    },
-    borderColor: '#10B981',
-    gradient: 'linear-gradient(210deg,#10B981,#000)',
-  },
-  {
     image: "images/contributor/anggi.png",
     title: 'Anggi Ayu Aulia',
     subtitle: 'Desain UI/UX',
@@ -83,5 +55,33 @@ export const contributorData = [
     },
     borderColor: '#e5e352ff', 
     gradient: 'linear-gradient(195deg,#EF4444,#000)',
+  },
+  {
+    image: "/images/contributor/zandika.png", 
+    title: 'Zandika Setya Wardana',
+    subtitle: 'Flowchart & Sitemap',
+    description:
+      'Pembuatan struktur alur sistem (flowchart) dan sitemap aplikasi. Fokus pada penyusunan logika dasar dan integrasi antar halaman.',
+    socials: {
+      github: 'https://github.com/zandika',
+      instagram: 'https://instagram.com/zandika',
+      linkedin: 'https://linkedin.com/in/zandika',
+    },
+    borderColor: '#4F46E5',
+    gradient: 'linear-gradient(145deg,#4F46E5,#000)',
+  },
+  {
+    image: "/images/contributor/khatami.png",
+    title: 'M Musyaffa Khatami',
+    subtitle: 'Flowchart & Sitemap',
+    description:
+      'Pembuatan flowchart dan struktur navigasi, memastikan alur pengguna dan fungsionalitas aplikasi terorganisir dengan baik.',
+    socials: {
+      github: 'https://github.com/katami0127',
+      linkedin: 'https://linkedin.com/in/khatami',
+      instagram: 'https://www.instagram.com/khatami_27?igsh=Z29ybTA3MHFqbm5i',
+    },
+    borderColor: '#10B981',
+    gradient: 'linear-gradient(210deg,#10B981,#000)',
   },
 ];
