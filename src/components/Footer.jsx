@@ -6,17 +6,17 @@ const linkColumns = [
   {
     title: "Features",
     links: [
-      { name: "Chatbot AI", href: "/chat" },
-      { name: "Template Makalah", href: "/outline" },
-      { name: "Review Jurnal", href: "/review" },
+      { name: "Chatbot AI", href: "/chat-bot-ai" },
+      { name: "Template Makalah", href: "/review-jurnal-ai" },
+      { name: "Review Jurnal", href: "/template-makalah" },
     ],
   },
   {
     title: "Project",
     links: [
-      { name: "About Us", href: "/about" },
+      { name: "About Us", href: "/" },
       { name: "GitHub", href: "https://github.com/rifkifrds/satset-ai" },
-      { name: "Contributors", href: "/contributors" },
+      { name: "Contributors", href: "/contributor" },
     ],
   },
   {

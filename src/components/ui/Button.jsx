@@ -2,12 +2,13 @@ import React from "react";
 
 /**
  * Komponen Tombol Kustom (Primary & Secondary)
- * * Props:
+ * Props:
  * - variant: 'primary' | 'secondary'
  * - size: 'sm' | 'md' | 'lg'
- * - rounded: 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full' // <-- BARU
- * - className: ...
- * - ...props: ...
+ * - rounded: 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full'
+ * - className: tambahan class
+ * - href: jika ada, maka render <a>
+ * - ...props: atribut tambahan
  */
 export default function Button({
   variant = "primary",
@@ -15,8 +16,11 @@ export default function Button({
   rounded = "full",
   className = "",
   children,
+  href, 
   ...props
 }) {
+  const Component = href ? "a" : "button";
+
   // --- Base Style ---
   const baseStyle = `
     font-semibold tracking-wide shadow-lg 
@@ -42,7 +46,7 @@ export default function Button({
     full: "rounded-full",
   };
 
-  // --- Variant Styles
+  // --- Variant Styles ---
   const variantStyle = {
     primary: `
       bg-[#647DEB] text-gray-100 
@@ -66,8 +70,8 @@ export default function Button({
   `;
 
   return (
-    <button className={classes} {...props}>
+    <Component className={classes} href={href} {...props}>
       {children}
-    </button>
+    </Component>
   );
 }
