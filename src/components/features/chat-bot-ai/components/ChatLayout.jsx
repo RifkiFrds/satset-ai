@@ -33,21 +33,6 @@ export default function ChatLayout() {
     if (chats.length === 0) handleNewConversation();
   }, [chats.length]);
 
-  // Inline Typing Bubble
-  const TypingBubble = () => (
-    <div className="flex gap-2 items-center w-fit bg-white/80 dark:bg-white/5 px-4 py-3 rounded-xl shadow-sm border border-gray-200/50 dark:border-white/10">
-      <div className="w-2 h-2 bg-gray-400 dark:bg-gray-300 rounded-full animate-bounce" />
-      <div className="w-2 h-2 bg-gray-400 dark:bg-gray-300 rounded-full animate-bounce delay-150" />
-      <div className="w-2 h-2 bg-gray-400 dark:bg-gray-300 rounded-full animate-bounce delay-300" />
-    </div>
-  );
-
-  const showSuggestionPanel =
-    activeConversation?.messages.length === 1 && !isLoading;
-
-  const showTypingBubble =
-    activeConversation?.messages.length === 1 && isLoading;
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 16 }}
@@ -62,6 +47,7 @@ export default function ChatLayout() {
           border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden shadow-xl
         `}
       >
+        
         {/* SIDEBAR */}
         <ChatSidebar
           sidebarOpen={sidebarOpen}
@@ -99,20 +85,13 @@ export default function ChatLayout() {
             />
           </div>
 
-          {/* SUGGESTION OR TYPING BUBBLE */}
-          {(showSuggestionPanel || showTypingBubble) && (
+          {/* SUGGESTION PANEL */}
+          {activeConversation?.messages.length === 2 && !isLoading && (
             <div className="px-4 md:px-6 py-4">
-
-              {showSuggestionPanel && <SuggestionPanel />}
-
-              {showTypingBubble && (
-                <div className="mt-3">
-                  <TypingBubble />
-                </div>
-              )}
-
+              <SuggestionPanel />
             </div>
           )}
+   
 
           {/* INPUT FORM */}
           <ChatInputForm

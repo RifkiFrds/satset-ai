@@ -1,4 +1,4 @@
-import { useChatStore } from "./store";
+import { useChatStore } from "../hooks/useChatStore";
 
 export async function sendMessage(chatId) {
   const chats = useChatStore.getState().chats;
