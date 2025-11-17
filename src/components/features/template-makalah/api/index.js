@@ -1,13 +1,14 @@
-export async function generateMakalah(topic, style) {
+export async function generateMakalah({ topic, style, citationFormat }) {
   try {
     const res = await fetch("/.netlify/functions/generateMakalah", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ topic, style }),
+      body: JSON.stringify({ topic, style, citationFormat }), 
     });
 
     if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
+      const errorData = await res.json().catch(() => ({}));
+      throw new Error(errorData.error || `HTTP error! status: ${res.status}`);
     }
 
     const data = await res.json();
@@ -19,6 +20,7 @@ export async function generateMakalah(topic, style) {
 
   } catch (err) {
     console.error("Error generating makalah:", err);
-    return "⚠️ Maaf, server sedang bermasalah. Coba lagi sebentar ya.";
+    // Melempar error agar hook bisa menangkapnya
+    throw new Error(err.message || "Maaf, server sedang bermasalah. Coba lagi sebentar ya.");
   }
 }

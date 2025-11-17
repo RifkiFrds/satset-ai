@@ -1,19 +1,14 @@
-import { Document, Packer, Paragraph, HeadingLevel } from "docx";
+import { Document, Packer, Paragraph, HeadingLevel, AlignmentType, convertInchesToTwip } from "docx";
 import { saveAs } from "file-saver";
 
-/**
- * Membuat file .docx dari teks Markdown sederhana (hanya judul dan paragraf)
- * @param {string} topic - Judul dokumen
- * @param {string} markdownContent - Konten dari AI
- */
 export function generateDocx(topic, markdownContent) {
-  const children = [
-    new Paragraph({
-      text: topic,
-      heading: HeadingLevel.TITLE,
-    }),
-    new Paragraph({ text: "" }), // Spasi
-  ];
+  
+  // Regex untuk mendeteksi heading
+  const heading1Regex = /^\d+\.\s.*\*$/; // Cth: 1. **Latar Belakang**
+  const heading2Regex = /^\d\.\d\s.*\*$/; // Cth: 5.1 **Teori A**
+  const boldOnlyRegex = /^\*\*(.*)\*\*$/; // Cth: **Judul**
+
+  const children = [];
 
   // Split konten berdasarkan baris baru
   const lines = markdownContent.split('\n');
@@ -22,47 +17,111 @@ export function generateDocx(topic, markdownContent) {
     let paragraph;
     line = line.trim(); // Hapus spasi
 
-    if (line.startsWith("9. Daftar Pustaka")) {
-      // Judul Daftar Pustaka
+    // Hapus tanda **
+    const cleanLine = line.replace(/\*\*/g, '');
+
+    if (line.match(heading1Regex)) {
+      // Ini adalah Heading 1
       paragraph = new Paragraph({
-        text: line.replace("9. ", ""),
-        heading: HeadingLevel.HEADING_1,
+        text: cleanLine.replace(/^\d+\.\s*/, ''), // Hapus "1. "
+        style: "heading1",
       });
-    } else if (line.match(/^\d+\..+/)) {
-      // Cek apakah ini Heading 1 (cth: "1. Latar Belakang")
+    } else if (line.match(heading2Regex)) {
+      // Ini adalah Heading 2
       paragraph = new Paragraph({
-        text: line.replace(/^\d+\.\s*/, ''), // Hapus "1. "
-        heading: HeadingLevel.HEADING_1,
+        text: cleanLine.replace(/^\d\.\d\s*/, ''), // Hapus "5.1 "
+        style: "heading2",
       });
-    } else if (line.match(/^\d\.\d/)) {
-      // Cek apakah ini Heading 2 (cth: "5.1 Teori A")
-      paragraph = new Paragraph({
-        text: line.replace(/^\d\.\d\s*/, ''), // Hapus "5.1 "
-        heading: HeadingLevel.HEADING_2,
+    } else if (line.match(boldOnlyRegex) && line.length < 100) {
+      // Ini mungkin Judul atau sub-judul non-numerik
+       paragraph = new Paragraph({
+        text: cleanLine,
+        style: "heading1", // Perlakukan sebagai Heading 1
       });
     } else if (line.length > 0) {
       // Ini adalah paragraf biasa
       paragraph = new Paragraph({
-        text: line,
+        text: cleanLine,
+        style: "normal",
       });
     } else {
       // Ini adalah baris kosong, beri spasi
-      paragraph = new Paragraph({ text: "" });
+      paragraph = new Paragraph({ text: "", style: "normal" });
     }
     
     children.push(paragraph);
   });
 
   const doc = new Document({
+    // IMPROVEMENT: Menambah styles (font, size, spacing)
+    styles: {
+      default: {
+        document: {
+          run: { font: "Calibri", size: 24 }, // 12pt
+        },
+      },
+      paragraphStyles: [
+        {
+          id: "normal",
+          name: "Normal",
+          basedOn: "Normal",
+          next: "Normal",
+          run: { font: "Calibri", size: 24 }, // 12pt
+          paragraph: {
+            spacing: { after: 120 }, // 6pt spacing after
+          },
+        },
+        {
+          id: "heading1",
+          name: "Heading 1",
+          basedOn: "Normal",
+          next: "Normal",
+          run: { size: 32, bold: true }, // 16pt
+          paragraph: {
+            spacing: { before: 240, after: 120 }, // 12pt before, 6pt after
+          },
+        },
+        {
+          id: "heading2",
+          name: "Heading 2",
+          basedOn: "Normal",
+          next: "Normal",
+          run: { size: 28, bold: true }, // 14pt
+          paragraph: {
+            spacing: { before: 200, after: 100 },
+          },
+        },
+      ],
+    },
     sections: [{
-      properties: {},
-      children: children,
+      // margin halaman (1 inci)
+      properties: {
+        page: {
+          margin: {
+            top: convertInchesToTwip(1),
+            right: convertInchesToTwip(1),
+            bottom: convertInchesToTwip(1),
+            left: convertInchesToTwip(1),
+          },
+        },
+      },
+      children: [
+        // Judul Utama di
+         new Paragraph({
+          text: topic,
+          heading: HeadingLevel.TITLE,
+          alignment: AlignmentType.CENTER,
+          spacing: { after: 300 }
+        }),
+        new Paragraph({ text: "" }), // Spasi
+        ...children
+      ],
     }],
   });
 
   Packer.toBlob(doc).then(blob => {
     console.log("Blob DOCX berhasil dibuat, memicu download...");
-    saveAs(blob, `Kerangka Makalah - ${topic}.docx`);
+    saveAs(blob, `Draf Makalah - ${topic}.docx`);
   }).catch(err => {
     console.error("Gagal membuat file docx:", err);
   });
