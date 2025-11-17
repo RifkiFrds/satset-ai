@@ -31,7 +31,22 @@ export default function ChatLayout() {
 
   useEffect(() => {
     if (chats.length === 0) handleNewConversation();
-  }, [chats.length]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [chats.length]);
+
+  // Inline Typing Bubble
+  const TypingBubble = () => (
+    <div className="flex gap-2 items-center w-fit bg-white/80 dark:bg-white/5 px-4 py-3 rounded-xl shadow-sm border border-gray-200/50 dark:border-white/10">
+      <div className="w-2 h-2 bg-gray-400 dark:bg-gray-300 rounded-full animate-bounce" />
+      <div className="w-2 h-2 bg-gray-400 dark:bg-gray-300 rounded-full animate-bounce delay-150" />
+      <div className="w-2 h-2 bg-gray-400 dark:bg-gray-300 rounded-full animate-bounce delay-300" />
+    </div>
+  );
+
+  const showSuggestionPanel =
+    activeConversation?.messages.length === 1 && !isLoading;
+
+  const showTypingBubble =
+    activeConversation?.messages.length === 1 && isLoading;
 
   return (
     <motion.div
@@ -47,6 +62,7 @@ export default function ChatLayout() {
           border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden shadow-xl
         `}
       >
+        {/* SIDEBAR */}
         <ChatSidebar
           sidebarOpen={sidebarOpen}
           onClose={toggleSidebar}
@@ -60,7 +76,8 @@ export default function ChatLayout() {
           onSearch={setSearchTerm}
         />
 
-        <div 
+        {/* MAIN PANEL */}
+        <div
           className={`flex-col relative bg-white dark:bg-[#0B0F29] min-h-0
             ${sidebarOpen ? "hidden lg:flex" : "flex"}
           `}
@@ -73,6 +90,8 @@ export default function ChatLayout() {
             onExport={exportToPDF}
             onDelete={() => handleDeleteConversation(activeConversationId)}
           />
+
+          {/* CHAT BODY */}
           <div className="flex-1 overflow-y-auto min-h-0">
             <ChatBody
               messages={activeConversation?.messages || []}
@@ -80,18 +99,28 @@ export default function ChatLayout() {
             />
           </div>
 
-          {activeConversation?.messages.length === 1 && !isLoading && (
+          {/* SUGGESTION OR TYPING BUBBLE */}
+          {(showSuggestionPanel || showTypingBubble) && (
             <div className="px-4 md:px-6 py-4">
-              <SuggestionPanel />
+
+              {showSuggestionPanel && <SuggestionPanel />}
+
+              {showTypingBubble && (
+                <div className="mt-3">
+                  <TypingBubble />
+                </div>
+              )}
+
             </div>
           )}
-          
+
+          {/* INPUT FORM */}
           <ChatInputForm
             disabled={isLoading || !activeConversationId}
             onSubmit={handleSubmit}
             currentModel={currentModel}
-          setCurrentModel={setCurrentModel}
-          availableModels={availableModels}
+            setCurrentModel={setCurrentModel}
+            availableModels={availableModels}
           />
         </div>
       </div>

@@ -15,6 +15,7 @@ export function useChat() {
     addMessage,
     deleteChat,
     renameChat,
+    systemPrompt,
   } = useChatStore();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -38,6 +39,10 @@ export function useChat() {
       title: "Percakapan Baru",
       createdAt: Date.now(),
       messages: [
+      {
+        role: "system",
+        content: systemPrompt, 
+      },
         {
           role: "assistant",
           content:
