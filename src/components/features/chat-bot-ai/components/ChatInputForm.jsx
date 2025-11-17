@@ -95,7 +95,7 @@ export default function ChatInputForm({
         </AnimatePresence>
 
         <div
-          className="relative flex-1 flex items-center w-full
+          className="relative flex-1 flex items-center w-full 
                      rounded-xl bg-gray-50 dark:bg-white/5 
                      border border-gray-200 dark:border-white/10 
                      shadow-sm 
@@ -115,13 +115,14 @@ export default function ChatInputForm({
                              : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300"
                          }`}
             >
-              {listening ? <MicOff size={20} /> : <Mic size={20} />}
+              {listening ? <MicOff size={18} /> : <Mic size={18} />}
             </button>
           ) : (
             <div className="flex-shrink-0 ml-3.5 p-1">
-              <MicOff size={20} className="text-gray-400" />
+              <MicOff size={18} className="text-gray-400" />
             </div>
           )}
+
           <textarea
             value={value}
             onChange={(e) => setValue(e.target.value)}
