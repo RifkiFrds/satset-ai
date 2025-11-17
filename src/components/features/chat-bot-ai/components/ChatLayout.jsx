@@ -6,6 +6,7 @@ import ChatSidebar from "./ChatSidebar";
 import ChatHeader from "./ChatHeader";
 import ChatBody from "./ChatBody";
 import ChatInputForm from "./ChatInputForm";
+import SuggestionPanel from "./SuggestionPanel";
 
 export default function ChatLayout() {
   const { sidebarOpen, toggleSidebar } = useUIStore();
@@ -78,6 +79,13 @@ export default function ChatLayout() {
               isLoading={isLoading}
             />
           </div>
+
+          {activeConversation?.messages.length === 1 && !isLoading && (
+            <div className="px-4 md:px-6 py-4">
+              <SuggestionPanel />
+            </div>
+          )}
+          
           <ChatInputForm
             disabled={isLoading || !activeConversationId}
             onSubmit={handleSubmit}
