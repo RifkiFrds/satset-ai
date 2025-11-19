@@ -3,31 +3,31 @@ import { motion } from "framer-motion";
 
 const testimonials = [
   {
-    name: "Muhammad yusup",
-    role: "Mahasiswa UNIS",
+    name: "Muhammad yusuf",
+    role: "Mahasiswa UMT",
     avatar: "/images/testi/yusuf.jpeg",
     text:"Platform ini sangat membantu tugas kuliah berkat tiga fitur Utamanya Serta sumber belajar yang lengkap.",
     rating: 4,
   },    
   {
-    name: "Syam",
+    name: "Syamyida al islam",
     role: "Mahasiswa UMT",
     avatar: "/images/testi/syam.jpeg",
     text: "Website ini sangat bermanfaat dengan fitur fitur yang sangat lengkap cocok untuk kalangan mahasiswa.",
     rating: 5,
   },
   {
-    name: "Nazky",
+    name: "Nabil Zaky Pratama",
     role: "Mahasisawa UMT",
-    avatar: "/images/testi/",
+    avatar: "/images/testi/nazky.jpeg",
     text: "untuk ui/ux nya sangat mudah dipahami dan di gunakan, fiturnya juga lengkap banget dan cocok.",
     rating: 4,
   },
   {
     name: "Muhammad Jatri",
     role: "Mahasiswa UNPAM",
-    avatar: "/images/testi/",
-    text: "satset-ai membantu mahasiswa mencari informasi, memeriksa bahasa, dan merangkum teks, sehingga proses belajar meningkat secara efektif.",
+    avatar: "/images/testi/jatri.jpeg",
+    text: "satset-ai membantu mahasiswa mencari informasi, memeriksa jurnal, dan merangkum teks.",
     rating: 5,
   },
   {
@@ -40,7 +40,7 @@ const testimonials = [
   {
     name: "Fachri Ramadhan",
     role: "Mahasiswa UMT",
-    avatar: "/images/testi/",
+    avatar: "/images/testi/fahri.jpeg",
     text: "fitur dark mode sangat bagus dan ui terlihat sangat modern serta baik untuk mahasiswa.",
     rating: 5,
   },
