@@ -18,7 +18,7 @@ const testimonials = [
   },
   {
     name: "Nabil Zaky Pratama",
-    role: "Mahasisawa UMT",
+    role: "Mahasiswa UMT",
     avatar: "/images/testi/nazky.jpeg",
     text: "untuk ui/ux nya sangat mudah dipahami dan di gunakan, fiturnya juga lengkap banget dan cocok.",
     rating: 4,
