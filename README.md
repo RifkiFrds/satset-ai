@@ -125,7 +125,7 @@ serverless backend (`netlify/`) dan React frontend (`src/`).
 ## ▶️ Running Locally
 
 1. Clone repo:
-git clone https://github.com/YOUR_USERNAME/satset-ai.git
+git clone https://github.com/rifkifrds/satset-ai
 cd satset-ai
 
 2. Install dependencies:
