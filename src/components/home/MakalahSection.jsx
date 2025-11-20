@@ -98,7 +98,7 @@ export default function MakalahSection() {
           className="flex justify-center lg:justify-end"
         >
           <div className="relative group w-full max-w-[260px] sm:max-w-[350px] md:max-w-[450px]">
-            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-tr from-[#C74559]/40 to-[#647DEB]/40 opacity-40 blur-2xl transition group-hover:opacity-80"></div>
+            <div className="absolute -inset-4 rounded-[2rem] bg-gradient-to-tr from-[#C74559]/10 to-[#647DEB]/10 opacity-40 blur-2xl transition group-hover:opacity-80"></div>
             <img
               src="/images/makalah.webp"
               alt="Makalah"
