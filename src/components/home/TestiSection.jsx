@@ -20,28 +20,28 @@ const testimonials = [
     name: "Nabil Zaky Pratama",
     role: "Mahasiswa UMT",
     avatar: "/images/testi/nazky.jpeg",
-    text: "untuk ui/ux nya sangat mudah dipahami dan di gunakan, fiturnya juga lengkap banget dan cocok.",
+    text: "Untuk ui/ux nya sangat mudah dipahami dan di gunakan, fiturnya juga lengkap banget dan cocok.",
     rating: 4,
   },
   {
     name: "Muhammad Jatri",
     role: "Mahasiswa UNPAM",
     avatar: "/images/testi/jatri.jpeg",
-    text: "satset-ai membantu mahasiswa mencari informasi, memeriksa jurnal, dan merangkum teks.",
+    text: "Satset-ai membantu mahasiswa mencari informasi, memeriksa jurnal, dan merangkum teks.",
     rating: 5,
   },
   {
     name: "Muhammad Isronun Najib",
     role: "Mahasiswa UMT",
     avatar: "/images/testi/najib.jpeg",
-    text: "sangat menarik dan enak di lihat ui dan ux nya serta bagus unuk tugas tugas kuliah .",
+    text: "Sangat menarik dan enak di lihat ui dan ux nya serta bagus unuk tugas tugas kuliah.",
     rating: 4,
   },
   {
     name: "Fachri Ramadhan",
     role: "Mahasiswa UMT",
     avatar: "/images/testi/fahri.jpeg",
-    text: "fitur dark mode sangat bagus dan ui terlihat sangat modern serta baik untuk mahasiswa.",
+    text: "Fitur dark mode sangat bagus dan ui terlihat sangat modern serta baik untuk mahasiswa.",
     rating: 5,
   },
 ];
@@ -69,7 +69,7 @@ const TestimonialCard = ({ name, avatar, text, rating, role }) => {
       </div>
 
       <blockquote className="mt-4 flex-1">
-        <p className="text-lg text-gray-800 dark:text-gray-200">“{text}”</p>
+        <p className="text-lg text-gray-800 dark:text-gray-200">{text}</p>
       </blockquote>
 
       <div className="flex items-center mt-6">

@@ -101,7 +101,7 @@ export default function Navbar() {
         >
           <div
             className="border border-gray-100 dark:border-gray-900 backdrop-blur-xl
-               w-full xl:max-w-2xl rounded-full
+               w-full md:w-[600px] rounded-full
                flex items-center justify-between px-6 py-3 transition-all duration-300"
           >
             <BorderBeam />
