@@ -16,7 +16,7 @@ export default function ReviewJurnalPage() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className="container mx-auto px-4 py-16 max-w-4xl"
+      className="container mx-auto px-4 pt-32 pb-20 max-w-4xl"
     >
       <ReviewHero />
       <FeatureGrid />
