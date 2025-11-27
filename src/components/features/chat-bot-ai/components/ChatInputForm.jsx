@@ -115,7 +115,7 @@ export default function ChatInputForm({
                              : "bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300"
                          }`}
             >
-              {listening ? <MicOff size={20} /> : <Mic size={20} />}
+              {listening ? <MicOff size={25} /> : <Mic size={25} />}
             </button>
           ) : (
             <div className="flex-shrink-0 ml-3.5 p-1">
