@@ -59,7 +59,7 @@ export const contributorData = [
   {
     image: "/images/contributor/zandika.png", 
     title: 'Zandika Setya Wardana',
-    subtitle: 'Flowchart & Sitemap',
+    subtitle: 'System Analyst',
     description:
       'Pembuatan struktur alur sistem (flowchart) dan sitemap aplikasi. Fokus pada penyusunan logika dasar dan integrasi antar halaman.',
     socials: {
@@ -73,7 +73,7 @@ export const contributorData = [
   {
     image: "/images/contributor/khatami.png",
     title: 'M Musyaffa Khatami',
-    subtitle: 'Flowchart & Sitemap',
+    subtitle: 'System Analyst',
     description:
       'Pembuatan flowchart dan struktur navigasi, memastikan alur pengguna dan fungsionalitas aplikasi terorganisir dengan baik.',
     socials: {
