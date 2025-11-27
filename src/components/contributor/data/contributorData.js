@@ -31,7 +31,7 @@ export const contributorData = [
   {
     image: "images/contributor/anggi.png",
     title: 'Anggi Ayu Aulia',
-    subtitle: 'Desain UI/UX',
+    subtitle: 'UI & UX Designer',
     description:
       'Mendesain tampilan dan alur interaksi pengguna agar lebih efisien dan menarik dan mudah digunakan.',
     socials: {
@@ -45,7 +45,7 @@ export const contributorData = [
   {
     image: "/images/contributor/daris.png",
     title: 'Muhammad Daris',
-    subtitle: 'Desain UI/UX',
+    subtitle: 'UI & UX Designer',
     description:
       'Berperan dalam merancang tampilan antarmuka, dan mengelola aset design prototipe agar sesuai dengan kebutuhan pengguna.',
     socials: {
