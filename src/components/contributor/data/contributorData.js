@@ -17,7 +17,7 @@ export const contributorData = [
   {
     image: "/images/contributor/rifki.png",
     title: 'Muhammad Rifki Firdaus',
-    subtitle: 'Fullstack Devloper',
+    subtitle: 'Fullstack Developer',
     description:
       'Build. Lead. Innovate. Mengembangkan aplikasi dari frontend hingga backend serta memimpin tim menuju inovasi teknologi.',
     socials: {
